@@ -1,0 +1,12 @@
+C:\CSharp\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.exe.config
+C:\CSharp\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.exe
+C:\CSharp\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.pdb
+C:\CSharp\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.csprojResolveAssemblyReference.cache
+C:\CSharp\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.Properties.Resources.resources
+C:\CSharp\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.csproj.GenerateResource.Cache
+C:\CSharp\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.exe
+C:\CSharp\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.pdb
+C:\CSharp\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.FormMain.resources
+C:\CSharp\ASP\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.exe.config
+C:\CSharp\ASP\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.exe
+C:\CSharp\ASP\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.pdb
