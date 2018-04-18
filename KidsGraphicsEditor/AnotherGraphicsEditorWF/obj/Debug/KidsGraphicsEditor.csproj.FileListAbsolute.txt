@@ -10,3 +10,12 @@ C:\CSharp\ASP\AnotherGraphicsEditorWF\AnotherGraphicsEditorWF\obj\Debug\AnotherG
 C:\CSharp\ASP\KidsGraphicsEditor\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.exe.config
 C:\CSharp\ASP\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.exe
 C:\CSharp\ASP\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.pdb
+C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.exe.config
+C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.exe
+C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.pdb
+C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.exe
+C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.pdb
+C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\KidsGraphicsEditor.csprojResolveAssemblyReference.cache
+C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.FormMain.resources
+C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.Properties.Resources.resources
+C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\KidsGraphicsEditor.csproj.GenerateResource.Cache

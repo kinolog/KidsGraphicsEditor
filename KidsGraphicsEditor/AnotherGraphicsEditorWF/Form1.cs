@@ -14,6 +14,8 @@ namespace AnotherGraphicsEditorWF
     {
         bool isImageSaved = false;
         Color color = Color.Black;
+        bool isTemplateOn = false;
+        int curTemplateSize = -1, curTemplateStep = -1;
 
         public FormMain()
         {
@@ -21,6 +23,13 @@ namespace AnotherGraphicsEditorWF
             WindowState = FormWindowState.Maximized;
             openImageDialog.Title = "Открыть изображение";
             saveImageDialog.Title = "Сохранить изображение";
+
+            isTemplateOn = false;
+            BackgroundImage = null; //is it correct way to clear BackgroundImage of the form?
+            templatePanel.Enabled = false;
+            templatePanel.Visible = false;
+
+            isImageSaved = true;
         }
 
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -134,5 +143,28 @@ namespace AnotherGraphicsEditorWF
         }
 
         #endregion
+
+        private void buttonTemplateClose_Click(object sender, EventArgs e)
+        {
+            isTemplateOn = false;
+            BackgroundImage = null; //is it correct way to clear BackgroundImage of the form?
+            templatePanel.Enabled = false;
+            templatePanel.Visible = false;
+        }
+
+        private void showTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //показать диалог
+            DialogResult res = openTemplateDialog.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                string template = openTemplateDialog.FileName;
+                //открыть выбранный шаблон
+                isTemplateOn = true;
+                templatePanel.Enabled = true;
+
+                templatePanel.Visible = false;
+            }
+        }
     }
 }

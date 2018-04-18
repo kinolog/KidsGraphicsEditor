@@ -34,7 +34,9 @@
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.templateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsAndColorsPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lineWidthTrackBar = new System.Windows.Forms.TrackBar();
             this.colorsPanel = new System.Windows.Forms.Panel();
             this.labelBlack = new System.Windows.Forms.Label();
@@ -53,12 +55,21 @@
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.openImageDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveImageDialog = new System.Windows.Forms.SaveFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
+            this.openTemplateDialog = new System.Windows.Forms.OpenFileDialog();
+            this.templatePanel = new System.Windows.Forms.Panel();
+            this.labelTemplateName = new System.Windows.Forms.Label();
+            this.templatePreviewBox = new System.Windows.Forms.PictureBox();
+            this.buttonStepForward = new System.Windows.Forms.Button();
+            this.buttonStepBack = new System.Windows.Forms.Button();
+            this.buttonTemplateMinimize = new System.Windows.Forms.Button();
+            this.buttonTemplateClose = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             this.toolsAndColorsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lineWidthTrackBar)).BeginInit();
             this.colorsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
+            this.templatePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.templatePreviewBox)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -97,9 +108,18 @@
             // 
             // templateToolStripMenuItem
             // 
+            this.templateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showTemplateToolStripMenuItem});
             this.templateToolStripMenuItem.Name = "templateToolStripMenuItem";
             this.templateToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.templateToolStripMenuItem.Text = "Шаблоны";
+            // 
+            // showTemplateToolStripMenuItem
+            // 
+            this.showTemplateToolStripMenuItem.Name = "showTemplateToolStripMenuItem";
+            this.showTemplateToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.showTemplateToolStripMenuItem.Text = "Показать шаблон";
+            this.showTemplateToolStripMenuItem.Click += new System.EventHandler(this.showTemplateToolStripMenuItem_Click);
             // 
             // toolsAndColorsPanel
             // 
@@ -111,6 +131,15 @@
             this.toolsAndColorsPanel.Name = "toolsAndColorsPanel";
             this.toolsAndColorsPanel.Size = new System.Drawing.Size(186, 616);
             this.toolsAndColorsPanel.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(43, 122);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Толщина";
             // 
             // lineWidthTrackBar
             // 
@@ -269,14 +298,86 @@
             // 
             this.saveImageDialog.Filter = "Изображения|*.jpg; *.jpeg; *.png; *.bmp";
             // 
-            // label1
+            // openTemplateDialog
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 122);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Толщина";
+            this.openTemplateDialog.FileName = "openFileDialog1";
+            // 
+            // templatePanel
+            // 
+            this.templatePanel.BackColor = System.Drawing.Color.PeachPuff;
+            this.templatePanel.Controls.Add(this.buttonTemplateClose);
+            this.templatePanel.Controls.Add(this.buttonTemplateMinimize);
+            this.templatePanel.Controls.Add(this.buttonStepBack);
+            this.templatePanel.Controls.Add(this.buttonStepForward);
+            this.templatePanel.Controls.Add(this.templatePreviewBox);
+            this.templatePanel.Controls.Add(this.labelTemplateName);
+            this.templatePanel.Location = new System.Drawing.Point(1137, 27);
+            this.templatePanel.Name = "templatePanel";
+            this.templatePanel.Size = new System.Drawing.Size(217, 236);
+            this.templatePanel.TabIndex = 3;
+            // 
+            // labelTemplateName
+            // 
+            this.labelTemplateName.AutoSize = true;
+            this.labelTemplateName.Location = new System.Drawing.Point(4, 4);
+            this.labelTemplateName.Name = "labelTemplateName";
+            this.labelTemplateName.Size = new System.Drawing.Size(74, 13);
+            this.labelTemplateName.TabIndex = 0;
+            this.labelTemplateName.Text = "ИмяШаблона";
+            // 
+            // templatePreviewBox
+            // 
+            this.templatePreviewBox.BackColor = System.Drawing.Color.White;
+            this.templatePreviewBox.Location = new System.Drawing.Point(36, 29);
+            this.templatePreviewBox.Name = "templatePreviewBox";
+            this.templatePreviewBox.Size = new System.Drawing.Size(148, 167);
+            this.templatePreviewBox.TabIndex = 1;
+            this.templatePreviewBox.TabStop = false;
+            // 
+            // buttonStepForward
+            // 
+            this.buttonStepForward.FlatAppearance.BorderSize = 0;
+            this.buttonStepForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStepForward.Location = new System.Drawing.Point(134, 203);
+            this.buttonStepForward.Name = "buttonStepForward";
+            this.buttonStepForward.Size = new System.Drawing.Size(75, 23);
+            this.buttonStepForward.TabIndex = 5;
+            this.buttonStepForward.Text = "шаг вперёд";
+            this.buttonStepForward.UseVisualStyleBackColor = true;
+            // 
+            // buttonStepBack
+            // 
+            this.buttonStepBack.FlatAppearance.BorderSize = 0;
+            this.buttonStepBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStepBack.Location = new System.Drawing.Point(18, 203);
+            this.buttonStepBack.Name = "buttonStepBack";
+            this.buttonStepBack.Size = new System.Drawing.Size(75, 23);
+            this.buttonStepBack.TabIndex = 6;
+            this.buttonStepBack.Text = "шаг назад";
+            this.buttonStepBack.UseVisualStyleBackColor = true;
+            // 
+            // buttonTemplateMinimize
+            // 
+            this.buttonTemplateMinimize.FlatAppearance.BorderSize = 0;
+            this.buttonTemplateMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemplateMinimize.Location = new System.Drawing.Point(134, 4);
+            this.buttonTemplateMinimize.Name = "buttonTemplateMinimize";
+            this.buttonTemplateMinimize.Size = new System.Drawing.Size(26, 23);
+            this.buttonTemplateMinimize.TabIndex = 7;
+            this.buttonTemplateMinimize.Text = "m";
+            this.buttonTemplateMinimize.UseVisualStyleBackColor = true;
+            // 
+            // buttonTemplateClose
+            // 
+            this.buttonTemplateClose.FlatAppearance.BorderSize = 0;
+            this.buttonTemplateClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemplateClose.Location = new System.Drawing.Point(178, 4);
+            this.buttonTemplateClose.Name = "buttonTemplateClose";
+            this.buttonTemplateClose.Size = new System.Drawing.Size(27, 23);
+            this.buttonTemplateClose.TabIndex = 8;
+            this.buttonTemplateClose.Text = "c";
+            this.buttonTemplateClose.UseVisualStyleBackColor = true;
+            this.buttonTemplateClose.Click += new System.EventHandler(this.buttonTemplateClose_Click);
             // 
             // FormMain
             // 
@@ -284,6 +385,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1354, 642);
+            this.Controls.Add(this.templatePanel);
             this.Controls.Add(this.mainPictureBox);
             this.Controls.Add(this.toolsAndColorsPanel);
             this.Controls.Add(this.mainMenuStrip);
@@ -300,6 +402,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.lineWidthTrackBar)).EndInit();
             this.colorsPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
+            this.templatePanel.ResumeLayout(false);
+            this.templatePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.templatePreviewBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,6 +437,15 @@
         private System.Windows.Forms.Label labelSkyBlue;
         private System.Windows.Forms.TrackBar lineWidthTrackBar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem showTemplateToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openTemplateDialog;
+        private System.Windows.Forms.Panel templatePanel;
+        private System.Windows.Forms.Label labelTemplateName;
+        private System.Windows.Forms.PictureBox templatePreviewBox;
+        private System.Windows.Forms.Button buttonTemplateClose;
+        private System.Windows.Forms.Button buttonTemplateMinimize;
+        private System.Windows.Forms.Button buttonStepBack;
+        private System.Windows.Forms.Button buttonStepForward;
     }
 }
 

@@ -83,6 +83,7 @@
     <Content Include="Image1.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="TemplateIcons\" />
     <Folder Include="Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
