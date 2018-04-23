@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace AnotherGraphicsEditorWF
         Color color = Color.Black;
         bool isTemplateOn = false;
         int curTemplateSize = -1, curTemplateStep = -1;
-
+        
         public FormMain()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace AnotherGraphicsEditorWF
             BackgroundImage = null; //is it correct way to clear BackgroundImage of the form?
             templatePanel.Enabled = false;
             templatePanel.Visible = false;
-
+            
             isImageSaved = true;
         }
 
@@ -36,18 +37,31 @@ namespace AnotherGraphicsEditorWF
         {
             if (openImageDialog.ShowDialog()== DialogResult.OK)
             {
-                mainPictureBox.Image = new Bitmap(openImageDialog.FileName);
-            }
-            
+                Image img = new Bitmap(openImageDialog.FileName);
+                mainPictureBox.Height = Math.Max(img.Height, mainPictureBox.Height);
+                mainPictureBox.Width = Math.Max(img.Width, mainPictureBox.Width);
+                mainPictureBox.Image = img;
+            }            
         }
 
         private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //saveImageDialog.ShowDialog();
             DialogResult res = saveImageDialog.ShowDialog();
-            if (res==DialogResult.OK)
+            ImageFormat format = ImageFormat.Png;
+            if (res == DialogResult.OK)
             {
-
+                string ext = System.IO.Path.GetExtension(saveImageDialog.FileName);
+                switch (ext)
+                {
+                    case ".jpg":
+                    case ".jpeg":
+                        format = ImageFormat.Jpeg;
+                        break;
+                    case ".bmp":
+                        format = ImageFormat.Bmp;
+                        break;
+                }
+                mainPictureBox.Image.Save(saveImageDialog.FileName, format);
                 isImageSaved = true;
             }
         }
@@ -61,7 +75,24 @@ namespace AnotherGraphicsEditorWF
                 {
                     case DialogResult.Yes:
                         {
-                            saveImageDialog.ShowDialog();
+                            DialogResult resDialog = saveImageDialog.ShowDialog();
+                            ImageFormat format = ImageFormat.Png;
+                            if (resDialog == DialogResult.OK)
+                            {
+                                string ext = System.IO.Path.GetExtension(saveImageDialog.FileName);
+                                switch (ext)
+                                {
+                                    case ".jpg":
+                                    case ".jpeg":
+                                        format = ImageFormat.Jpeg;
+                                        break;
+                                    case ".bmp":
+                                        format = ImageFormat.Bmp;
+                                        break;
+                                }
+                                mainPictureBox.Image.Save(saveImageDialog.FileName, format);
+                                isImageSaved = true;
+                            }
                         }
                         break;
 
@@ -152,6 +183,16 @@ namespace AnotherGraphicsEditorWF
             templatePanel.Visible = false;
         }
 
+        private void buttonStepBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonStepForward_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void showTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //показать диалог
@@ -162,8 +203,12 @@ namespace AnotherGraphicsEditorWF
                 //открыть выбранный шаблон
                 isTemplateOn = true;
                 templatePanel.Enabled = true;
-
-                templatePanel.Visible = false;
+                Image img = new Bitmap(openTemplateDialog.FileName);
+                //mainPictureBox.BackgroundImage = img;
+                mainImagePanel.BackgroundImage = img;
+                
+                //как сделать так, чтобы img отображалось только 1 раз на backgroundimage?
+                templatePanel.Visible = true;
             }
         }
     }
