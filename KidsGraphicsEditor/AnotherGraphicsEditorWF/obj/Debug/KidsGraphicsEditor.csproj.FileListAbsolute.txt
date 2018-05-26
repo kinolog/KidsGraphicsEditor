@@ -19,3 +19,12 @@ C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debu
 C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.FormMain.resources
 C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.Properties.Resources.resources
 C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\KidsGraphicsEditor.csproj.GenerateResource.Cache
+C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.exe.config
+C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.exe
+C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.pdb
+C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\KidsGraphicsEditor.csprojResolveAssemblyReference.cache
+C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.FormMain.resources
+C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.Properties.Resources.resources
+C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\KidsGraphicsEditor.csproj.GenerateResource.Cache
+C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.exe
+C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.pdb

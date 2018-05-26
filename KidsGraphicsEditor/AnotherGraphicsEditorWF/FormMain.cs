@@ -15,8 +15,12 @@ namespace AnotherGraphicsEditorWF
     {
         bool isImageSaved = false;
         Color color = Color.Black;
-        bool isTemplateOn = false;
+        bool isTemplateOn;
         int curTemplateSize = -1, curTemplateStep = -1;
+
+        bool mouseDown = false;
+        int x1, y1, x2, y2;          //coordinates of the mouse
+
         
         public FormMain()
         {
@@ -106,11 +110,18 @@ namespace AnotherGraphicsEditorWF
             }
         }
 
+        // how about adding "mouseleave" and "mousehover" events while choosing the color?
 
         #region settingColor
         private void labelRed_Click(object sender, EventArgs e)
         {
             color = Color.Red;
+            // the impression of "selecting" the color
+            // need to keep track of the current labelColor selected and the previois, like this:
+            // labelPrev = labelCurrent
+            // labelCurrent = this_label
+            // when the new labelColor is clicked, the border of the previously selected label hast to go back to default
+            labelRed.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelOrange_Click(object sender, EventArgs e)
@@ -192,6 +203,31 @@ namespace AnotherGraphicsEditorWF
         {
 
         }
+
+        #region mouseEventHandlers
+        private void mainPictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            x1 = e.X;
+            y1 = e.Y;
+        }
+
+        private void mainPictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                x2 = e.X;
+                y2 = e.Y;
+                mainPictureBox.Invalidate();
+                mainPictureBox.Update();
+            }
+        }
+
+        private void mainPictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+        #endregion
 
         private void showTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
