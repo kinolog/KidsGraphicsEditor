@@ -357,27 +357,7 @@ namespace AnotherGraphicsEditorWF
                 toolsList[activeToolControlName].Draw(g, color, width, ref x1, ref y1, ref x2, ref y2);
                                
                 e.Graphics.DrawImageUnscaled(tempDraw, 0, 0);
-                g.Dispose();
-                //switch (activeToolInd)
-                //{
-                //    case (int)tools.pencilInd:
-                //        //if (tempDraw == null)
-                //        //    break;               
-
-                //pencil.Draw(g, color, width, x1, y1, x2, y2);
-                //x1 = x2;
-                //y1 = y2;
-                //e.Graphics.DrawImageUnscaled(tempDraw, 0, 0);
-                //g.Dispose();
-                //        break;
-                //    case (int)tools.eraserInd:
-                //        eraser.Draw(g, color, width, x1, y1, x2, y2);
-                //        x1 = x2;
-                //        y1 = y2;
-                //        e.Graphics.DrawImageUnscaled(tempDraw, 0, 0);
-                //        g.Dispose();
-                //        break;
-                //}
+                g.Dispose();                
             }
         }
 
@@ -388,7 +368,6 @@ namespace AnotherGraphicsEditorWF
             x2 = e.X;
             y1 = e.Y;
             y2 = e.Y;
-
             
             //mainPictureBox.Invalidate();
             //mainPictureBox.Update();
