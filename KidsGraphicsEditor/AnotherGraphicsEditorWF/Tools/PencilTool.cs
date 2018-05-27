@@ -3,29 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Drawing;
 
 namespace AnotherGraphicsEditorWF.Tools
 {
     class PencilTool : ITool
     {
-        Pen pencil;
+        Pen pencilPen;
 
-        public PencilTool(Color setColor, int width)
+        public PencilTool(int width)
         {
-            pencil = new Pen(setColor, width);
+            pencilPen = new Pen(Color.Black, width);
         }
 
         public void Draw(Graphics g, Color setColor, int width, ref int x1, ref int y1, ref int x2, ref int y2)
         {
-            pencil.Color = setColor;
-            pencil.Width = width;
-            g.DrawLine(pencil, x1, y1, x2, y2);
+            pencilPen.Color = setColor;
+            pencilPen.Width = width;
+            g.DrawLine(pencilPen, x1, y1, x2, y2);
             x1 = x2;
             y1 = y2;
         }
-
-       
     }
 }

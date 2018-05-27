@@ -17,9 +17,9 @@ namespace AnotherGraphicsEditorWF
         bool isImageSaved;
         
         bool isTemplateOn;
-        int curTemplateSize = -1, curTemplateStep = -1;
+        int curTemplateSize, curTemplateStep;
                 
-        bool mouseDown = false;
+        bool mouseDown;
         int x1, y1, x2, y2;          //coordinates of the mouse
 
         Bitmap snapshot;
@@ -34,7 +34,10 @@ namespace AnotherGraphicsEditorWF
                 
         Dictionary<string, ITool> toolsList;
         EraserTool eraser;
-        PencilTool pencil;       
+        PencilTool pencil;
+        RectangleTool rect;
+        LineTool line;
+        EllipseTool ellipse;
         
         public FormMain()
         {                      
@@ -42,8 +45,10 @@ namespace AnotherGraphicsEditorWF
             //WindowState = FormWindowState.Maximized;
             openImageDialog.Title = "Открыть изображение";
             saveImageDialog.Title = "Сохранить изображение";
-
+            
             isTemplateOn = false;
+            curTemplateSize = -1;
+            curTemplateStep = -1;
             BackgroundImage = null; //is it correct way to clear BackgroundImage of the form?
             templatePanel.Enabled = false;
             templatePanel.Visible = false;
@@ -52,16 +57,23 @@ namespace AnotherGraphicsEditorWF
 
             snapshot = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
 
-            activeToolControlName = "";
-            activeColorControlName = "";
+            mouseDown = false;
+            activeToolControlName = null;
+            activeColorControlName = null;
             width = lineThicknessTrackBar.Value;
 
             eraser = new EraserTool(width);
-            pencil = new PencilTool(color, width);
+            pencil = new PencilTool(width);
+            rect = new RectangleTool( width);
+            line = new LineTool(width);
+            ellipse = new EllipseTool(width);
 
             toolsList = new Dictionary<string, ITool>();
             toolsList.Add("labelPencil", pencil);
             toolsList.Add("labelEraser", eraser);
+            toolsList.Add("labelRect", rect);
+            toolsList.Add("labelLine", line);
+            toolsList.Add("labelEllipse", ellipse);
         }
 
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -337,7 +349,10 @@ namespace AnotherGraphicsEditorWF
         {  
             Graphics g;
             if ((tempDraw != null) && (activeToolControlName != null) && color != null)
-            {                
+            {
+                // don't need to fix the changes immediately, only when button is released
+                if (activeToolControlName != "labelPencil" && activeToolControlName != "labelEraser")
+                    tempDraw = (Bitmap)snapshot.Clone();
                 g = Graphics.FromImage(tempDraw);
                 toolsList[activeToolControlName].Draw(g, color, width, ref x1, ref y1, ref x2, ref y2);
                                
@@ -366,8 +381,6 @@ namespace AnotherGraphicsEditorWF
             }
         }
 
-        
-
         #region mouseEventHandlers
         private void mainPictureBox_MouseClick(object sender, MouseEventArgs e)
         {
@@ -376,6 +389,7 @@ namespace AnotherGraphicsEditorWF
             y1 = e.Y;
             y2 = e.Y;
 
+            
             //mainPictureBox.Invalidate();
             //mainPictureBox.Update();
         }
