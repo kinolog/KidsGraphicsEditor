@@ -8,24 +8,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AnotherGraphicsEditorWF.Tools;
 
 namespace AnotherGraphicsEditorWF
 {
     public partial class FormMain : Form
     {
-        bool isImageSaved = false;
-        Color color = Color.Black;
+        bool isImageSaved;
+        
         bool isTemplateOn;
         int curTemplateSize = -1, curTemplateStep = -1;
-
+                
         bool mouseDown = false;
         int x1, y1, x2, y2;          //coordinates of the mouse
 
+        Bitmap snapshot;
+        Bitmap tempDraw; 
+
+        int width;
+        Color color;
+        string activeToolControlName;
+        Control labelToolPrev;
+        string activeColorControlName;
+        Control labelColorPrev;
+                
+        Dictionary<string, ITool> toolsList;
+        EraserTool eraser;
+        PencilTool pencil;       
         
         public FormMain()
-        {
+        {                      
             InitializeComponent();
-            WindowState = FormWindowState.Maximized;
+            //WindowState = FormWindowState.Maximized;
             openImageDialog.Title = "Открыть изображение";
             saveImageDialog.Title = "Сохранить изображение";
 
@@ -35,6 +49,19 @@ namespace AnotherGraphicsEditorWF
             templatePanel.Visible = false;
             
             isImageSaved = true;
+
+            snapshot = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
+
+            activeToolControlName = "";
+            activeColorControlName = "";
+            width = lineThicknessTrackBar.Value;
+
+            eraser = new EraserTool(width);
+            pencil = new PencilTool(color, width);
+
+            toolsList = new Dictionary<string, ITool>();
+            toolsList.Add("labelPencil", pencil);
+            toolsList.Add("labelEraser", eraser);
         }
 
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,80 +137,182 @@ namespace AnotherGraphicsEditorWF
             }
         }
 
-        // how about adding "mouseleave" and "mousehover" events while choosing the color?
-
         #region settingColor
         private void labelRed_Click(object sender, EventArgs e)
         {
             color = Color.Red;
-            // the impression of "selecting" the color
-            // need to keep track of the current labelColor selected and the previois, like this:
-            // labelPrev = labelCurrent
-            // labelCurrent = this_label
-            // when the new labelColor is clicked, the border of the previously selected label hast to go back to default
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelRed";             
             labelRed.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelOrange_Click(object sender, EventArgs e)
         {
             color = Color.Orange;
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelOrange";            
+            labelOrange.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelYellow_Click(object sender, EventArgs e)
         {
             color = Color.Yellow;
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelYellow";            
+            labelYellow.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelBrown_Click(object sender, EventArgs e)
         {
             color = Color.Brown;
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelBrown";
+            labelBrown.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelLightGreen_Click(object sender, EventArgs e)
         {
             color = Color.Lime;
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelLightGreen";
+            labelLightGreen.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelDarkGreen_Click(object sender, EventArgs e)
         {
             color = Color.Green;
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelDarkGreen";
+            labelDarkGreen.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelSkyBlue_Click(object sender, EventArgs e)
         {
             color = Color.Cyan;
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelSkyBlue";
+            labelSkyBlue.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelBlue_Click(object sender, EventArgs e)
         {
             color = Color.Blue;
-        }
-
-        private void labelPurple_Click(object sender, EventArgs e)
-        {
-            color = Color.BlueViolet;
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelBlue";
+            labelBlue.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelViolet_Click(object sender, EventArgs e)
         {
             color = Color.BlueViolet;
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelViolet";
+            labelViolet.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelPink_Click(object sender, EventArgs e)
         {
             color = Color.Magenta;
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelPink";
+            labelPink.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelWhite_Click(object sender, EventArgs e)
         {
             color = Color.White;
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelWhite";
+            labelWhite.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelBlack_Click(object sender, EventArgs e)
         {
             color = Color.Black;
+            labelColorPrev = colorsPanel.Controls[activeColorControlName];
+            if (labelColorPrev != null)
+                ((Label)labelColorPrev).BorderStyle = BorderStyle.None;
+            activeColorControlName = "labelBlack";
+            labelBlack.BorderStyle = BorderStyle.Fixed3D;
+        }
+        #endregion
+
+        #region settingTool
+        private void labelPencil_Click(object sender, EventArgs e)
+        {            
+            labelToolPrev = toolsPanel.Controls[activeToolControlName];
+            if (labelToolPrev != null)
+                ((Label)labelToolPrev).BorderStyle = BorderStyle.None;
+            activeToolControlName = "labelPencil";
+            labelPencil.BorderStyle = BorderStyle.Fixed3D;
         }
 
+        private void labelEraser_Click(object sender, EventArgs e)
+        {
+            labelToolPrev = toolsPanel.Controls[activeToolControlName];
+            if (labelToolPrev != null)
+                ((Label)labelToolPrev).BorderStyle = BorderStyle.None;
+            activeToolControlName = "labelEraser";
+            labelEraser.BorderStyle = BorderStyle.Fixed3D;
+        }
+
+        private void labelPaint_Click(object sender, EventArgs e)
+        {
+            labelToolPrev = toolsPanel.Controls[activeToolControlName];
+            if (labelToolPrev != null)
+                ((Label)labelToolPrev).BorderStyle = BorderStyle.None;
+            activeToolControlName = "labelPaint";
+            labelPaint.BorderStyle = BorderStyle.Fixed3D;
+        }
+
+        private void labelLine_Click(object sender, EventArgs e)
+        {
+            labelToolPrev = toolsPanel.Controls[activeToolControlName];
+            if (labelToolPrev != null)
+                ((Label)labelToolPrev).BorderStyle = BorderStyle.None;
+            activeToolControlName = "labelLine";
+            labelLine.BorderStyle = BorderStyle.Fixed3D;
+        }
+
+        private void labelRect_Click(object sender, EventArgs e)
+        {
+            labelToolPrev = toolsPanel.Controls[activeToolControlName];
+            if (labelToolPrev != null)
+                ((Label)labelToolPrev).BorderStyle = BorderStyle.None;
+            activeToolControlName = "labelRect";
+            labelRect.BorderStyle = BorderStyle.Fixed3D;
+        }
+
+        private void labelEllipse_Click(object sender, EventArgs e)
+        {
+            labelToolPrev = toolsPanel.Controls[activeToolControlName];
+            if (labelToolPrev != null)
+                ((Label)labelToolPrev).BorderStyle = BorderStyle.None;
+            activeToolControlName = "labelEllipse";
+            labelEllipse.BorderStyle = BorderStyle.Fixed3D;
+        }
         #endregion
 
         private void buttonTemplateClose_Click(object sender, EventArgs e)
@@ -204,14 +333,61 @@ namespace AnotherGraphicsEditorWF
 
         }
 
+        private void mainPictureBox_Paint(object sender, PaintEventArgs e)
+        {  
+            Graphics g;
+            if ((tempDraw != null) && (activeToolControlName != null) && color != null)
+            {                
+                g = Graphics.FromImage(tempDraw);
+                toolsList[activeToolControlName].Draw(g, color, width, ref x1, ref y1, ref x2, ref y2);
+                               
+                e.Graphics.DrawImageUnscaled(tempDraw, 0, 0);
+                g.Dispose();
+                //switch (activeToolInd)
+                //{
+                //    case (int)tools.pencilInd:
+                //        //if (tempDraw == null)
+                //        //    break;               
+
+                //pencil.Draw(g, color, width, x1, y1, x2, y2);
+                //x1 = x2;
+                //y1 = y2;
+                //e.Graphics.DrawImageUnscaled(tempDraw, 0, 0);
+                //g.Dispose();
+                //        break;
+                //    case (int)tools.eraserInd:
+                //        eraser.Draw(g, color, width, x1, y1, x2, y2);
+                //        x1 = x2;
+                //        y1 = y2;
+                //        e.Graphics.DrawImageUnscaled(tempDraw, 0, 0);
+                //        g.Dispose();
+                //        break;
+                //}
+            }
+        }
+
+        
+
         #region mouseEventHandlers
+        private void mainPictureBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            x1 = e.X;
+            x2 = e.X;
+            y1 = e.Y;
+            y2 = e.Y;
+
+            //mainPictureBox.Invalidate();
+            //mainPictureBox.Update();
+        }
+
         private void mainPictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
             x1 = e.X;
             y1 = e.Y;
+            tempDraw = (Bitmap)snapshot.Clone();
         }
-
+        
         private void mainPictureBox_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
@@ -226,8 +402,16 @@ namespace AnotherGraphicsEditorWF
         private void mainPictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+            snapshot = (Bitmap)tempDraw.Clone();
         }
         #endregion
+
+        // tracking the change of width
+        private void lineThicknessTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            width = lineThicknessTrackBar.Value;
+        }
+
 
         private void showTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {

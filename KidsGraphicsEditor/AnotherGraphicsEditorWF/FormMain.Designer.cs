@@ -36,7 +36,14 @@
             this.templateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsAndColorsPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.toolsPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.labelEraser = new System.Windows.Forms.Label();
+            this.labelPencil = new System.Windows.Forms.Label();
+            this.labelPaint = new System.Windows.Forms.Label();
+            this.labelLine = new System.Windows.Forms.Label();
+            this.labelEllipse = new System.Windows.Forms.Label();
+            this.labelRect = new System.Windows.Forms.Label();
+            this.labelWidth = new System.Windows.Forms.Label();
             this.lineThicknessTrackBar = new System.Windows.Forms.TrackBar();
             this.colorsPanel = new System.Windows.Forms.Panel();
             this.labelBlack = new System.Windows.Forms.Label();
@@ -63,9 +70,9 @@
             this.labelTemplateName = new System.Windows.Forms.Label();
             this.openTemplateDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainImagePanel = new System.Windows.Forms.Panel();
-            this.toolsPanel = new System.Windows.Forms.TableLayoutPanel();
             this.mainMenuStrip.SuspendLayout();
             this.toolsAndColorsPanel.SuspendLayout();
+            this.toolsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lineThicknessTrackBar)).BeginInit();
             this.colorsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
@@ -126,30 +133,115 @@
             // toolsAndColorsPanel
             // 
             this.toolsAndColorsPanel.Controls.Add(this.toolsPanel);
-            this.toolsAndColorsPanel.Controls.Add(this.label1);
+            this.toolsAndColorsPanel.Controls.Add(this.labelWidth);
             this.toolsAndColorsPanel.Controls.Add(this.lineThicknessTrackBar);
             this.toolsAndColorsPanel.Controls.Add(this.colorsPanel);
+            this.toolsAndColorsPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolsAndColorsPanel.Location = new System.Drawing.Point(0, 24);
             this.toolsAndColorsPanel.Name = "toolsAndColorsPanel";
-            this.toolsAndColorsPanel.Size = new System.Drawing.Size(186, 616);
+            this.toolsAndColorsPanel.Size = new System.Drawing.Size(186, 618);
             this.toolsAndColorsPanel.TabIndex = 1;
             // 
-            // label1
+            // toolsPanel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(62, 186);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Толщина";
+            this.toolsPanel.ColumnCount = 2;
+            this.toolsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.toolsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.toolsPanel.Controls.Add(this.labelEraser, 1, 0);
+            this.toolsPanel.Controls.Add(this.labelPencil, 0, 0);
+            this.toolsPanel.Controls.Add(this.labelPaint, 0, 1);
+            this.toolsPanel.Controls.Add(this.labelLine, 1, 1);
+            this.toolsPanel.Controls.Add(this.labelEllipse, 1, 2);
+            this.toolsPanel.Controls.Add(this.labelRect, 0, 2);
+            this.toolsPanel.Location = new System.Drawing.Point(22, 23);
+            this.toolsPanel.Name = "toolsPanel";
+            this.toolsPanel.RowCount = 3;
+            this.toolsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.toolsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.toolsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.toolsPanel.Size = new System.Drawing.Size(137, 134);
+            this.toolsPanel.TabIndex = 4;
+            // 
+            // labelEraser
+            // 
+            this.labelEraser.AutoSize = true;
+            this.labelEraser.Location = new System.Drawing.Point(71, 0);
+            this.labelEraser.Name = "labelEraser";
+            this.labelEraser.Size = new System.Drawing.Size(59, 13);
+            this.labelEraser.TabIndex = 1;
+            this.labelEraser.Text = "labelEraser";
+            this.labelEraser.Click += new System.EventHandler(this.labelEraser_Click);
+            // 
+            // labelPencil
+            // 
+            this.labelPencil.AutoSize = true;
+            this.labelPencil.Location = new System.Drawing.Point(3, 0);
+            this.labelPencil.Name = "labelPencil";
+            this.labelPencil.Size = new System.Drawing.Size(58, 13);
+            this.labelPencil.TabIndex = 0;
+            this.labelPencil.Text = "labelPencil";
+            this.labelPencil.Click += new System.EventHandler(this.labelPencil_Click);
+            // 
+            // labelPaint
+            // 
+            this.labelPaint.AutoSize = true;
+            this.labelPaint.Location = new System.Drawing.Point(3, 44);
+            this.labelPaint.Name = "labelPaint";
+            this.labelPaint.Size = new System.Drawing.Size(53, 13);
+            this.labelPaint.TabIndex = 5;
+            this.labelPaint.Text = "labelPaint";
+            this.labelPaint.Click += new System.EventHandler(this.labelPaint_Click);
+            // 
+            // labelLine
+            // 
+            this.labelLine.AutoSize = true;
+            this.labelLine.Location = new System.Drawing.Point(71, 44);
+            this.labelLine.Name = "labelLine";
+            this.labelLine.Size = new System.Drawing.Size(49, 13);
+            this.labelLine.TabIndex = 2;
+            this.labelLine.Text = "labelLine";
+            this.labelLine.Click += new System.EventHandler(this.labelLine_Click);
+            // 
+            // labelEllipse
+            // 
+            this.labelEllipse.AutoSize = true;
+            this.labelEllipse.Location = new System.Drawing.Point(71, 88);
+            this.labelEllipse.Name = "labelEllipse";
+            this.labelEllipse.Size = new System.Drawing.Size(59, 13);
+            this.labelEllipse.TabIndex = 4;
+            this.labelEllipse.Text = "labelEllipse";
+            this.labelEllipse.Click += new System.EventHandler(this.labelEllipse_Click);
+            // 
+            // labelRect
+            // 
+            this.labelRect.AutoSize = true;
+            this.labelRect.Location = new System.Drawing.Point(3, 88);
+            this.labelRect.Name = "labelRect";
+            this.labelRect.Size = new System.Drawing.Size(52, 13);
+            this.labelRect.TabIndex = 3;
+            this.labelRect.Text = "labelRect";
+            this.labelRect.Click += new System.EventHandler(this.labelRect_Click);
+            // 
+            // labelWidth
+            // 
+            this.labelWidth.AutoSize = true;
+            this.labelWidth.Location = new System.Drawing.Point(62, 186);
+            this.labelWidth.Name = "labelWidth";
+            this.labelWidth.Size = new System.Drawing.Size(53, 13);
+            this.labelWidth.TabIndex = 3;
+            this.labelWidth.Text = "Толщина";
             // 
             // lineThicknessTrackBar
             // 
             this.lineThicknessTrackBar.Location = new System.Drawing.Point(18, 202);
+            this.lineThicknessTrackBar.Maximum = 12;
+            this.lineThicknessTrackBar.Minimum = 2;
             this.lineThicknessTrackBar.Name = "lineThicknessTrackBar";
             this.lineThicknessTrackBar.Size = new System.Drawing.Size(144, 45);
             this.lineThicknessTrackBar.TabIndex = 2;
             this.lineThicknessTrackBar.TickFrequency = 2;
+            this.lineThicknessTrackBar.Value = 2;
+            this.lineThicknessTrackBar.ValueChanged += new System.EventHandler(this.lineThicknessTrackBar_ValueChanged);
             // 
             // colorsPanel
             // 
@@ -283,8 +375,11 @@
             this.mainPictureBox.Location = new System.Drawing.Point(0, 0);
             this.mainPictureBox.Name = "mainPictureBox";
             this.mainPictureBox.Size = new System.Drawing.Size(1167, 616);
+            this.mainPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.mainPictureBox.TabIndex = 2;
             this.mainPictureBox.TabStop = false;
+            this.mainPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPictureBox_Paint);
+            this.mainPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseClick);
             this.mainPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseDown);
             this.mainPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseMove);
             this.mainPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseUp);
@@ -388,20 +483,6 @@
             this.mainImagePanel.Size = new System.Drawing.Size(1170, 616);
             this.mainImagePanel.TabIndex = 4;
             // 
-            // toolsPanel
-            // 
-            this.toolsPanel.ColumnCount = 2;
-            this.toolsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.toolsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.toolsPanel.Location = new System.Drawing.Point(22, 23);
-            this.toolsPanel.Name = "toolsPanel";
-            this.toolsPanel.RowCount = 3;
-            this.toolsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.toolsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.toolsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.toolsPanel.Size = new System.Drawing.Size(137, 134);
-            this.toolsPanel.TabIndex = 4;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,6 +502,8 @@
             this.mainMenuStrip.PerformLayout();
             this.toolsAndColorsPanel.ResumeLayout(false);
             this.toolsAndColorsPanel.PerformLayout();
+            this.toolsPanel.ResumeLayout(false);
+            this.toolsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lineThicknessTrackBar)).EndInit();
             this.colorsPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
@@ -428,6 +511,7 @@
             this.templatePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.templatePreviewBox)).EndInit();
             this.mainImagePanel.ResumeLayout(false);
+            this.mainImagePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,7 +542,7 @@
         private System.Windows.Forms.Label labelBlue;
         private System.Windows.Forms.Label labelSkyBlue;
         private System.Windows.Forms.TrackBar lineThicknessTrackBar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelWidth;
         private System.Windows.Forms.ToolStripMenuItem showTemplateToolStripMenuItem;
         private System.Windows.Forms.Panel templatePanel;
         private System.Windows.Forms.Label labelTemplateName;
@@ -470,6 +554,12 @@
         private System.Windows.Forms.OpenFileDialog openTemplateDialog;
         private System.Windows.Forms.Panel mainImagePanel;
         private System.Windows.Forms.TableLayoutPanel toolsPanel;
+        private System.Windows.Forms.Label labelPencil;
+        private System.Windows.Forms.Label labelEraser;
+        private System.Windows.Forms.Label labelPaint;
+        private System.Windows.Forms.Label labelLine;
+        private System.Windows.Forms.Label labelEllipse;
+        private System.Windows.Forms.Label labelRect;
     }
 }
 
