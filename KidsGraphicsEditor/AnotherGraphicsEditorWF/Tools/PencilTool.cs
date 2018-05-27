@@ -8,19 +8,15 @@ using System.Drawing;
 namespace AnotherGraphicsEditorWF.Tools
 {
     class PencilTool : ITool
-    {
-        Pen pencilPen;
+    {       
+        public PencilTool(int pensWidth) : base (pensWidth)
+        { }
 
-        public PencilTool(int width)
+        public override void Draw(Graphics g, Color setColor, int width, ref int x1, ref int y1, ref int x2, ref int y2)
         {
-            pencilPen = new Pen(Color.Black, width);
-        }
-
-        public void Draw(Graphics g, Color setColor, int width, ref int x1, ref int y1, ref int x2, ref int y2)
-        {
-            pencilPen.Color = setColor;
-            pencilPen.Width = width;
-            g.DrawLine(pencilPen, x1, y1, x2, y2);
+            toolsPen.Color = setColor;
+            toolsPen.Width = width;
+            g.DrawLine(toolsPen, x1, y1, x2, y2);
             x1 = x2;
             y1 = y2;
         }

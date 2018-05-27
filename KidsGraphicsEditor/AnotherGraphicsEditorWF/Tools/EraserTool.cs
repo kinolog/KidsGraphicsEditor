@@ -8,18 +8,14 @@ using System.Drawing;
 namespace AnotherGraphicsEditorWF.Tools
 {
     class EraserTool : ITool
-    {
-        Pen eraserPen;
+    {  
+        public EraserTool(int pensWidth) : base (pensWidth)
+        { }
 
-        public EraserTool(int width)
+        public override void Draw(Graphics g, Color setColor, int width, ref int x1, ref int y1, ref int x2, ref int y2)
         {
-            eraserPen = new Pen(Color.White, width);
-        }
-
-        public void Draw(Graphics g, Color setColor, int width, ref int x1, ref int y1, ref int x2, ref int y2)
-        {
-            eraserPen.Width = width;
-            g.DrawRectangle(eraserPen, x1, y1, eraserPen.Width, eraserPen.Width);
+            toolsPen.Width = width;
+            g.DrawRectangle(toolsPen, x1, y1, toolsPen.Width, toolsPen.Width);
             x1 = x2;
             y1 = y2;
         }

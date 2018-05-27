@@ -39,7 +39,7 @@
             this.toolsPanel = new System.Windows.Forms.TableLayoutPanel();
             this.labelEraser = new System.Windows.Forms.Label();
             this.labelPencil = new System.Windows.Forms.Label();
-            this.labelPaint = new System.Windows.Forms.Label();
+            this.labelFill = new System.Windows.Forms.Label();
             this.labelLine = new System.Windows.Forms.Label();
             this.labelEllipse = new System.Windows.Forms.Label();
             this.labelRect = new System.Windows.Forms.Label();
@@ -149,7 +149,7 @@
             this.toolsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.toolsPanel.Controls.Add(this.labelEraser, 1, 0);
             this.toolsPanel.Controls.Add(this.labelPencil, 0, 0);
-            this.toolsPanel.Controls.Add(this.labelPaint, 0, 1);
+            this.toolsPanel.Controls.Add(this.labelFill, 0, 1);
             this.toolsPanel.Controls.Add(this.labelLine, 1, 1);
             this.toolsPanel.Controls.Add(this.labelEllipse, 1, 2);
             this.toolsPanel.Controls.Add(this.labelRect, 0, 2);
@@ -182,15 +182,15 @@
             this.labelPencil.Text = "labelPencil";
             this.labelPencil.Click += new System.EventHandler(this.labelPencil_Click);
             // 
-            // labelPaint
+            // labelFill
             // 
-            this.labelPaint.AutoSize = true;
-            this.labelPaint.Location = new System.Drawing.Point(3, 44);
-            this.labelPaint.Name = "labelPaint";
-            this.labelPaint.Size = new System.Drawing.Size(53, 13);
-            this.labelPaint.TabIndex = 5;
-            this.labelPaint.Text = "labelPaint";
-            this.labelPaint.Click += new System.EventHandler(this.labelPaint_Click);
+            this.labelFill.AutoSize = true;
+            this.labelFill.Location = new System.Drawing.Point(3, 44);
+            this.labelFill.Name = "labelFill";
+            this.labelFill.Size = new System.Drawing.Size(41, 13);
+            this.labelFill.TabIndex = 5;
+            this.labelFill.Text = "labelFill";
+            this.labelFill.Click += new System.EventHandler(this.labelFill_Click);
             // 
             // labelLine
             // 
@@ -234,13 +234,13 @@
             // lineThicknessTrackBar
             // 
             this.lineThicknessTrackBar.Location = new System.Drawing.Point(18, 202);
-            this.lineThicknessTrackBar.Maximum = 12;
-            this.lineThicknessTrackBar.Minimum = 2;
+            this.lineThicknessTrackBar.Maximum = 15;
+            this.lineThicknessTrackBar.Minimum = 3;
             this.lineThicknessTrackBar.Name = "lineThicknessTrackBar";
             this.lineThicknessTrackBar.Size = new System.Drawing.Size(144, 45);
             this.lineThicknessTrackBar.TabIndex = 2;
-            this.lineThicknessTrackBar.TickFrequency = 2;
-            this.lineThicknessTrackBar.Value = 2;
+            this.lineThicknessTrackBar.TickFrequency = 3;
+            this.lineThicknessTrackBar.Value = 3;
             this.lineThicknessTrackBar.ValueChanged += new System.EventHandler(this.lineThicknessTrackBar_ValueChanged);
             // 
             // colorsPanel
@@ -371,7 +371,7 @@
             // 
             // mainPictureBox
             // 
-            this.mainPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.mainPictureBox.BackColor = System.Drawing.Color.White;
             this.mainPictureBox.Location = new System.Drawing.Point(0, 0);
             this.mainPictureBox.Name = "mainPictureBox";
             this.mainPictureBox.Size = new System.Drawing.Size(1167, 616);
@@ -556,7 +556,7 @@
         private System.Windows.Forms.TableLayoutPanel toolsPanel;
         private System.Windows.Forms.Label labelPencil;
         private System.Windows.Forms.Label labelEraser;
-        private System.Windows.Forms.Label labelPaint;
+        private System.Windows.Forms.Label labelFill;
         private System.Windows.Forms.Label labelLine;
         private System.Windows.Forms.Label labelEllipse;
         private System.Windows.Forms.Label labelRect;

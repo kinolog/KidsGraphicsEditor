@@ -58,6 +58,7 @@
     <Compile Include="Tools\EraserTool.cs" />
     <Compile Include="Tools\ITool.cs" />
     <Compile Include="Tools\LineTool.cs" />
+    <Compile Include="Tools\FillTool.cs" />
     <Compile Include="Tools\PencilTool.cs" />
     <Compile Include="Tools\RectangleTool.cs" />
     <EmbeddedResource Include="FormMain.resx">

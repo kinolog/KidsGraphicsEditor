@@ -20,12 +20,12 @@ namespace AnotherGraphicsEditorWF
         int curTemplateSize, curTemplateStep;
                 
         bool mouseDown;
-        int x1, y1, x2, y2;          //coordinates of the mouse
+        int x1, y1, x2, y2; //coordinates of the mouse
 
         Bitmap snapshot;
         Bitmap tempDraw; 
 
-        int width;
+        int width;        
         Color color;
         string activeToolControlName;
         Control labelToolPrev;
@@ -38,6 +38,7 @@ namespace AnotherGraphicsEditorWF
         RectangleTool rect;
         LineTool line;
         EllipseTool ellipse;
+        FillTool fill;
         
         public FormMain()
         {                      
@@ -56,6 +57,10 @@ namespace AnotherGraphicsEditorWF
             isImageSaved = true;
 
             snapshot = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
+            // cover all space with white
+            Graphics g = Graphics.FromImage(snapshot);
+            g.FillRectangle(new SolidBrush(Color.White), 0, 0, mainPictureBox.Width, mainPictureBox.Height);
+            g.Dispose();
 
             mouseDown = false;
             activeToolControlName = null;
@@ -67,6 +72,7 @@ namespace AnotherGraphicsEditorWF
             rect = new RectangleTool( width);
             line = new LineTool(width);
             ellipse = new EllipseTool(width);
+            fill = new FillTool();
 
             toolsList = new Dictionary<string, ITool>();
             toolsList.Add("labelPencil", pencil);
@@ -74,6 +80,7 @@ namespace AnotherGraphicsEditorWF
             toolsList.Add("labelRect", rect);
             toolsList.Add("labelLine", line);
             toolsList.Add("labelEllipse", ellipse);
+            toolsList.Add("labelFill", fill);
         }
 
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -290,13 +297,13 @@ namespace AnotherGraphicsEditorWF
             labelEraser.BorderStyle = BorderStyle.Fixed3D;
         }
 
-        private void labelPaint_Click(object sender, EventArgs e)
+        private void labelFill_Click(object sender, EventArgs e)
         {
             labelToolPrev = toolsPanel.Controls[activeToolControlName];
             if (labelToolPrev != null)
                 ((Label)labelToolPrev).BorderStyle = BorderStyle.None;
-            activeToolControlName = "labelPaint";
-            labelPaint.BorderStyle = BorderStyle.Fixed3D;
+            activeToolControlName = "labelFill";
+            labelFill.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void labelLine_Click(object sender, EventArgs e)
@@ -354,23 +361,23 @@ namespace AnotherGraphicsEditorWF
                 if (activeToolControlName != "labelPencil" && activeToolControlName != "labelEraser")
                     tempDraw = (Bitmap)snapshot.Clone();
                 g = Graphics.FromImage(tempDraw);
-                toolsList[activeToolControlName].Draw(g, color, width, ref x1, ref y1, ref x2, ref y2);
+                // special signature for fill
+                if (activeToolControlName == "labelFill")
+                    toolsList[activeToolControlName].Draw(tempDraw, tempDraw.GetPixel(x1, y1), color, x1, y1);
+                else
+                    toolsList[activeToolControlName].Draw(g, color, width, ref x1, ref y1, ref x2, ref y2);
                                
                 e.Graphics.DrawImageUnscaled(tempDraw, 0, 0);
                 g.Dispose();                
             }
         }
 
+        // order: mouseDown -> mouseClick -> mouseUp
         #region mouseEventHandlers
         private void mainPictureBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            x1 = e.X;
-            x2 = e.X;
-            y1 = e.Y;
-            y2 = e.Y;
-            
-            //mainPictureBox.Invalidate();
-            //mainPictureBox.Update();
+        { 
+            mainPictureBox.Invalidate();
+            mainPictureBox.Update();
         }
 
         private void mainPictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -380,10 +387,11 @@ namespace AnotherGraphicsEditorWF
             y1 = e.Y;
             tempDraw = (Bitmap)snapshot.Clone();
         }
-        
+
         private void mainPictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            if (mouseDown)
+            // avoid unnecessary redrawing
+            if ((mouseDown) && (activeToolControlName != "labelFill"))
             {
                 x2 = e.X;
                 y2 = e.Y;
@@ -395,7 +403,7 @@ namespace AnotherGraphicsEditorWF
         private void mainPictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
-            snapshot = (Bitmap)tempDraw.Clone();
+            snapshot = (Bitmap)tempDraw.Clone();            
         }
         #endregion
 
