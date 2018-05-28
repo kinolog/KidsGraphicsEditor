@@ -235,6 +235,22 @@
   <metadata name="saveImageDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>301, 17</value>
   </metadata>
+  <data name="buttonStepBack.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEYAAAAyCAYAAADhna1TAAAABGdBTUEAALGPC/xhBQAAAJxJREFUaEPt
+        07EJwkAYhuHYWllb2TqLE1g4hZvoEC7gSAFxB0H/S3IQ4bhKuIDPAy/mUsmXpAMAAACAf3CINuMl2TF6
+        RffhxCCP8oj26QZGKTJKgVEK8ijP6Dydl9AuamYd9dE7uk2/S+kUNZU+nfQJpbfmEpWeXouavjHZfJz0
+        p5gxToVxKoxTkce5Die+bKPVeAkAAAAA8Btd9wFNW1pMyWe2uwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="buttonStepForward.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEYAAAAyCAYAAADhna1TAAAABGdBTUEAALGPC/xhBQAAAJVJREFUaEPt
+        07EJwkAAheHY2tlaWeosTmDhFG6iQ7iAIwniDoK+MyopYhqLHPh98JOkC4+7BgAAAAD43STN21e6DumS
+        ls8vPjbplozTwzgDjDOgunEWqfxUDe3Te5xVGtU23Svq+Hqe0zSNpqYTs0vXVE5N+SbK1SlXyCgdRulh
+        lB5G+eKUjNJjltbtKwAAAADwL5rmAX8zWkgnbsZ8AAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="openTemplateDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>446, 17</value>
   </metadata>

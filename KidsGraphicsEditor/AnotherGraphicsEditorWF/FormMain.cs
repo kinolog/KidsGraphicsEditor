@@ -23,7 +23,8 @@ namespace AnotherGraphicsEditorWF
         int x1, y1, x2, y2; //coordinates of the mouse
 
         Bitmap snapshot;
-        Bitmap tempDraw; 
+        Bitmap tempDraw;
+        Bitmap backPic;
 
         int width;        
         Color color;
@@ -56,6 +57,7 @@ namespace AnotherGraphicsEditorWF
             
             isImageSaved = true;
 
+            backPic = null;
             snapshot = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
             // cover all space with white
             Graphics g = Graphics.FromImage(snapshot);
@@ -353,31 +355,35 @@ namespace AnotherGraphicsEditorWF
         }
 
         private void mainPictureBox_Paint(object sender, PaintEventArgs e)
-        {  
-            Graphics g;
+        {
             if ((tempDraw != null) && (activeToolControlName != null) && color != null)
             {
                 // don't need to fix the changes immediately, only when button is released
                 if (activeToolControlName != "labelPencil" && activeToolControlName != "labelEraser")
                     tempDraw = (Bitmap)snapshot.Clone();
-                g = Graphics.FromImage(tempDraw);
+                Graphics g = Graphics.FromImage(tempDraw);                
                 // special signature for fill
                 if (activeToolControlName == "labelFill")
                     toolsList[activeToolControlName].Draw(tempDraw, tempDraw.GetPixel(x1, y1), color, x1, y1);
                 else
                     toolsList[activeToolControlName].Draw(g, color, width, ref x1, ref y1, ref x2, ref y2);
-                               
                 e.Graphics.DrawImageUnscaled(tempDraw, 0, 0);
-                g.Dispose();                
-            }
+                g.Dispose();
+            }            
         }
 
         // order: mouseDown -> mouseClick -> mouseUp
         #region mouseEventHandlers
         private void mainPictureBox_MouseClick(object sender, MouseEventArgs e)
-        { 
-            mainPictureBox.Invalidate();
-            mainPictureBox.Update();
+        {
+            if ((activeToolControlName == "labelFill"))
+            {
+                x1 = e.X;
+                y1 = e.Y;
+
+                mainPictureBox.Invalidate();
+                mainPictureBox.Update();
+            }
         }
 
         private void mainPictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -425,12 +431,45 @@ namespace AnotherGraphicsEditorWF
                 isTemplateOn = true;
                 templatePanel.Enabled = true;
                 Image img = new Bitmap(openTemplateDialog.FileName);
+
+                //if ((img.Height !=600) || (img.Width!=1100)) for the halftransparent
+                //if ((img.Height !=250) || (img.Width!=200)) for the upper right corner
+
+                templatePreviewBox.BackgroundImage = img;
+
+                //backPic = new Bitmap(img);
+                //mainPictureBox.Invalidate();
+                //mainPictureBox.Update();
+
+                //mainImagePanel.Controls.SetChildIndex(templatePanel, 0);
+                //mainImagePanel.Controls.SetChildIndex(mainPictureBox, 1);
+                //mainImagePanel.Controls.SetChildIndex(backPictureBox, 1);
+
+                //mainImagePanel.BackgroundImage = img;
                 //mainPictureBox.BackgroundImage = img;
-                mainImagePanel.BackgroundImage = img;
-                
+                //mainPictureBox.BringToFront();
+
                 //как сделать так, чтобы img отображалось только 1 раз на backgroundimage?
                 templatePanel.Visible = true;
             }
+        }
+
+        private Bitmap CombineLayers()
+        {
+            tempDraw = (Bitmap)snapshot.Clone();            
+
+            Bitmap res = new Bitmap(backPic);
+            
+            for (int i = 0; i < mainPictureBox.Width; i++)
+            {
+                for (int j = 0; j < mainPictureBox.Height; j++)
+                {
+                    if ((tempDraw.GetPixel(i, j) != Color.Transparent) && (tempDraw.GetPixel(i, j) != Color.White) && (tempDraw.GetPixel(i, j) != mainPictureBox.BackColor) &&
+                        (tempDraw.GetPixel(i, j).A != 0) && (tempDraw.GetPixel(i, j).R != 0) && (tempDraw.GetPixel(i, j).G != 0) && (tempDraw.GetPixel(i, j).B != 0))
+                        res.SetPixel(i, j, tempDraw.GetPixel(i, j));                    
+                }
+            }
+            return res;
         }
     }
 }

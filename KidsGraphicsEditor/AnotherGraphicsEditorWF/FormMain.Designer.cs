@@ -90,7 +90,7 @@
             this.templateToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(1354, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(1297, 24);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "mainMenuStrip";
             // 
@@ -128,8 +128,8 @@
             // showTemplateToolStripMenuItem
             // 
             this.showTemplateToolStripMenuItem.Name = "showTemplateToolStripMenuItem";
-            this.showTemplateToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.showTemplateToolStripMenuItem.Text = "Показать шаблон";
+            this.showTemplateToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.showTemplateToolStripMenuItem.Text = "Загрузить шаблон";
             this.showTemplateToolStripMenuItem.Click += new System.EventHandler(this.showTemplateToolStripMenuItem_Click);
             // 
             // toolsAndColorsPanel
@@ -138,10 +138,9 @@
             this.toolsAndColorsPanel.Controls.Add(this.labelWidth);
             this.toolsAndColorsPanel.Controls.Add(this.lineThicknessTrackBar);
             this.toolsAndColorsPanel.Controls.Add(this.colorsPanel);
-            this.toolsAndColorsPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolsAndColorsPanel.Location = new System.Drawing.Point(0, 24);
             this.toolsAndColorsPanel.Name = "toolsAndColorsPanel";
-            this.toolsAndColorsPanel.Size = new System.Drawing.Size(186, 618);
+            this.toolsAndColorsPanel.Size = new System.Drawing.Size(188, 600);
             this.toolsAndColorsPanel.TabIndex = 1;
             // 
             // toolsPanel
@@ -398,10 +397,10 @@
             // mainPictureBox
             // 
             this.mainPictureBox.BackColor = System.Drawing.Color.White;
+            this.mainPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.mainPictureBox.Location = new System.Drawing.Point(0, 0);
             this.mainPictureBox.Name = "mainPictureBox";
-            this.mainPictureBox.Size = new System.Drawing.Size(1167, 616);
-            this.mainPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.mainPictureBox.Size = new System.Drawing.Size(1100, 600);
             this.mainPictureBox.TabIndex = 2;
             this.mainPictureBox.TabStop = false;
             this.mainPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPictureBox_Paint);
@@ -429,64 +428,68 @@
             this.templatePanel.Controls.Add(this.buttonStepForward);
             this.templatePanel.Controls.Add(this.templatePreviewBox);
             this.templatePanel.Controls.Add(this.labelTemplateName);
-            this.templatePanel.Location = new System.Drawing.Point(950, 3);
+            this.templatePanel.Location = new System.Drawing.Point(818, 3);
             this.templatePanel.Name = "templatePanel";
-            this.templatePanel.Size = new System.Drawing.Size(217, 236);
+            this.templatePanel.Size = new System.Drawing.Size(280, 347);
             this.templatePanel.TabIndex = 3;
             // 
             // buttonTemplateClose
             // 
+            this.buttonTemplateClose.BackColor = System.Drawing.Color.LightSalmon;
             this.buttonTemplateClose.FlatAppearance.BorderSize = 0;
             this.buttonTemplateClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTemplateClose.Location = new System.Drawing.Point(178, 4);
+            this.buttonTemplateClose.Location = new System.Drawing.Point(237, 4);
             this.buttonTemplateClose.Name = "buttonTemplateClose";
-            this.buttonTemplateClose.Size = new System.Drawing.Size(27, 23);
+            this.buttonTemplateClose.Size = new System.Drawing.Size(30, 25);
             this.buttonTemplateClose.TabIndex = 8;
-            this.buttonTemplateClose.Text = "c";
-            this.buttonTemplateClose.UseVisualStyleBackColor = true;
+            this.buttonTemplateClose.Text = "x";
+            this.buttonTemplateClose.UseVisualStyleBackColor = false;
             this.buttonTemplateClose.Click += new System.EventHandler(this.buttonTemplateClose_Click);
             // 
             // buttonTemplateMinimize
             // 
+            this.buttonTemplateMinimize.BackColor = System.Drawing.Color.LightSalmon;
             this.buttonTemplateMinimize.FlatAppearance.BorderSize = 0;
             this.buttonTemplateMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTemplateMinimize.Location = new System.Drawing.Point(134, 4);
+            this.buttonTemplateMinimize.Location = new System.Drawing.Point(195, 4);
             this.buttonTemplateMinimize.Name = "buttonTemplateMinimize";
-            this.buttonTemplateMinimize.Size = new System.Drawing.Size(26, 23);
+            this.buttonTemplateMinimize.Size = new System.Drawing.Size(30, 25);
             this.buttonTemplateMinimize.TabIndex = 7;
             this.buttonTemplateMinimize.Text = "m";
-            this.buttonTemplateMinimize.UseVisualStyleBackColor = true;
+            this.buttonTemplateMinimize.UseVisualStyleBackColor = false;
             // 
             // buttonStepBack
             // 
+            this.buttonStepBack.BackColor = System.Drawing.Color.LightSalmon;
             this.buttonStepBack.FlatAppearance.BorderSize = 0;
             this.buttonStepBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStepBack.Location = new System.Drawing.Point(18, 203);
+            this.buttonStepBack.Image = ((System.Drawing.Image)(resources.GetObject("buttonStepBack.Image")));
+            this.buttonStepBack.Location = new System.Drawing.Point(40, 305);
             this.buttonStepBack.Name = "buttonStepBack";
             this.buttonStepBack.Size = new System.Drawing.Size(75, 23);
             this.buttonStepBack.TabIndex = 6;
-            this.buttonStepBack.Text = "шаг назад";
-            this.buttonStepBack.UseVisualStyleBackColor = true;
+            this.buttonStepBack.UseVisualStyleBackColor = false;
             this.buttonStepBack.Click += new System.EventHandler(this.buttonStepBack_Click);
             // 
             // buttonStepForward
             // 
+            this.buttonStepForward.BackColor = System.Drawing.Color.LightSalmon;
             this.buttonStepForward.FlatAppearance.BorderSize = 0;
             this.buttonStepForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStepForward.Location = new System.Drawing.Point(134, 203);
+            this.buttonStepForward.Image = ((System.Drawing.Image)(resources.GetObject("buttonStepForward.Image")));
+            this.buttonStepForward.Location = new System.Drawing.Point(165, 305);
             this.buttonStepForward.Name = "buttonStepForward";
             this.buttonStepForward.Size = new System.Drawing.Size(75, 23);
             this.buttonStepForward.TabIndex = 5;
-            this.buttonStepForward.Text = "шаг вперёд";
-            this.buttonStepForward.UseVisualStyleBackColor = true;
+            this.buttonStepForward.UseVisualStyleBackColor = false;
             this.buttonStepForward.Click += new System.EventHandler(this.buttonStepForward_Click);
             // 
             // templatePreviewBox
             // 
             this.templatePreviewBox.BackColor = System.Drawing.Color.White;
-            this.templatePreviewBox.Location = new System.Drawing.Point(36, 29);
+            this.templatePreviewBox.Location = new System.Drawing.Point(40, 36);
             this.templatePreviewBox.Name = "templatePreviewBox";
-            this.templatePreviewBox.Size = new System.Drawing.Size(148, 167);
+            this.templatePreviewBox.Size = new System.Drawing.Size(200, 250);
             this.templatePreviewBox.TabIndex = 1;
             this.templatePreviewBox.TabStop = false;
             // 
@@ -502,11 +505,13 @@
             // mainImagePanel
             // 
             this.mainImagePanel.AutoScroll = true;
+            this.mainImagePanel.BackColor = System.Drawing.Color.Transparent;
+            this.mainImagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.mainImagePanel.Controls.Add(this.templatePanel);
             this.mainImagePanel.Controls.Add(this.mainPictureBox);
-            this.mainImagePanel.Location = new System.Drawing.Point(184, 24);
+            this.mainImagePanel.Location = new System.Drawing.Point(187, 24);
             this.mainImagePanel.Name = "mainImagePanel";
-            this.mainImagePanel.Size = new System.Drawing.Size(1170, 616);
+            this.mainImagePanel.Size = new System.Drawing.Size(1110, 610);
             this.mainImagePanel.TabIndex = 4;
             // 
             // FormMain
@@ -514,7 +519,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1354, 642);
+            this.ClientSize = new System.Drawing.Size(1297, 633);
             this.Controls.Add(this.mainImagePanel);
             this.Controls.Add(this.toolsAndColorsPanel);
             this.Controls.Add(this.mainMenuStrip);
@@ -537,7 +542,6 @@
             this.templatePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.templatePreviewBox)).EndInit();
             this.mainImagePanel.ResumeLayout(false);
-            this.mainImagePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

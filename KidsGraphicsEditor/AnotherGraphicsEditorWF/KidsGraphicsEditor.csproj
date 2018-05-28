@@ -98,7 +98,7 @@
     <Content Include="Icons\Open.png" />
     <Content Include="Icons\Pencil.png" />
     <Content Include="Icons\Rectangle.png" />
-    <Content Include="Image1.bmp" />
+    <Content Include="Logo.ico" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TemplateIcons\" />
