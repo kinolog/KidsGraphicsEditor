@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,11 +39,11 @@
             this.toolsAndColorsPanel = new System.Windows.Forms.Panel();
             this.toolsPanel = new System.Windows.Forms.TableLayoutPanel();
             this.labelEraser = new System.Windows.Forms.Label();
-            this.labelPencil = new System.Windows.Forms.Label();
             this.labelFill = new System.Windows.Forms.Label();
             this.labelLine = new System.Windows.Forms.Label();
             this.labelEllipse = new System.Windows.Forms.Label();
             this.labelRect = new System.Windows.Forms.Label();
+            this.labelPencil = new System.Windows.Forms.Label();
             this.labelWidth = new System.Windows.Forms.Label();
             this.lineThicknessTrackBar = new System.Windows.Forms.TrackBar();
             this.colorsPanel = new System.Windows.Forms.Panel();
@@ -70,6 +71,7 @@
             this.labelTemplateName = new System.Windows.Forms.Label();
             this.openTemplateDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainImagePanel = new System.Windows.Forms.Panel();
+            this.toolTipHelper = new System.Windows.Forms.ToolTip(this.components);
             this.mainMenuStrip.SuspendLayout();
             this.toolsAndColorsPanel.SuspendLayout();
             this.toolsPanel.SuspendLayout();
@@ -171,18 +173,8 @@
             this.labelEraser.Name = "labelEraser";
             this.labelEraser.Size = new System.Drawing.Size(63, 59);
             this.labelEraser.TabIndex = 1;
+            this.toolTipHelper.SetToolTip(this.labelEraser, "Ластик");
             this.labelEraser.Click += new System.EventHandler(this.labelEraser_Click);
-            // 
-            // labelPencil
-            // 
-            this.labelPencil.AutoSize = true;
-            this.labelPencil.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPencil.Image = ((System.Drawing.Image)(resources.GetObject("labelPencil.Image")));
-            this.labelPencil.Location = new System.Drawing.Point(3, 0);
-            this.labelPencil.Name = "labelPencil";
-            this.labelPencil.Size = new System.Drawing.Size(62, 59);
-            this.labelPencil.TabIndex = 0;
-            this.labelPencil.Click += new System.EventHandler(this.labelPencil_Click);
             // 
             // labelFill
             // 
@@ -193,6 +185,7 @@
             this.labelFill.Name = "labelFill";
             this.labelFill.Size = new System.Drawing.Size(62, 59);
             this.labelFill.TabIndex = 5;
+            this.toolTipHelper.SetToolTip(this.labelFill, "Заливка");
             this.labelFill.Click += new System.EventHandler(this.labelFill_Click);
             // 
             // labelLine
@@ -204,6 +197,7 @@
             this.labelLine.Name = "labelLine";
             this.labelLine.Size = new System.Drawing.Size(63, 59);
             this.labelLine.TabIndex = 2;
+            this.toolTipHelper.SetToolTip(this.labelLine, "Линия");
             this.labelLine.Click += new System.EventHandler(this.labelLine_Click);
             // 
             // labelEllipse
@@ -215,6 +209,7 @@
             this.labelEllipse.Name = "labelEllipse";
             this.labelEllipse.Size = new System.Drawing.Size(63, 60);
             this.labelEllipse.TabIndex = 4;
+            this.toolTipHelper.SetToolTip(this.labelEllipse, "Овал");
             this.labelEllipse.Click += new System.EventHandler(this.labelEllipse_Click);
             // 
             // labelRect
@@ -226,7 +221,20 @@
             this.labelRect.Name = "labelRect";
             this.labelRect.Size = new System.Drawing.Size(62, 60);
             this.labelRect.TabIndex = 3;
+            this.toolTipHelper.SetToolTip(this.labelRect, "Прямоугольник");
             this.labelRect.Click += new System.EventHandler(this.labelRect_Click);
+            // 
+            // labelPencil
+            // 
+            this.labelPencil.AutoSize = true;
+            this.labelPencil.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelPencil.Image = ((System.Drawing.Image)(resources.GetObject("labelPencil.Image")));
+            this.labelPencil.Location = new System.Drawing.Point(3, 0);
+            this.labelPencil.Name = "labelPencil";
+            this.labelPencil.Size = new System.Drawing.Size(62, 59);
+            this.labelPencil.TabIndex = 0;
+            this.toolTipHelper.SetToolTip(this.labelPencil, "Карандаш");
+            this.labelPencil.Click += new System.EventHandler(this.labelPencil_Click);
             // 
             // labelWidth
             // 
@@ -275,6 +283,7 @@
             this.labelBlack.Name = "labelBlack";
             this.labelBlack.Size = new System.Drawing.Size(70, 50);
             this.labelBlack.TabIndex = 11;
+            this.toolTipHelper.SetToolTip(this.labelBlack, "Чёрный");
             this.labelBlack.Click += new System.EventHandler(this.labelBlack_Click);
             // 
             // labelWhite
@@ -283,6 +292,7 @@
             this.labelWhite.Name = "labelWhite";
             this.labelWhite.Size = new System.Drawing.Size(70, 50);
             this.labelWhite.TabIndex = 10;
+            this.toolTipHelper.SetToolTip(this.labelWhite, "Белый");
             this.labelWhite.Click += new System.EventHandler(this.labelWhite_Click);
             // 
             // labelPink
@@ -292,6 +302,7 @@
             this.labelPink.Name = "labelPink";
             this.labelPink.Size = new System.Drawing.Size(70, 50);
             this.labelPink.TabIndex = 9;
+            this.toolTipHelper.SetToolTip(this.labelPink, "Розовый");
             this.labelPink.Click += new System.EventHandler(this.labelPink_Click);
             // 
             // labelViolet
@@ -301,6 +312,7 @@
             this.labelViolet.Name = "labelViolet";
             this.labelViolet.Size = new System.Drawing.Size(70, 50);
             this.labelViolet.TabIndex = 8;
+            this.toolTipHelper.SetToolTip(this.labelViolet, "Фиолетовый");
             this.labelViolet.Click += new System.EventHandler(this.labelViolet_Click);
             // 
             // labelBlue
@@ -310,6 +322,7 @@
             this.labelBlue.Name = "labelBlue";
             this.labelBlue.Size = new System.Drawing.Size(70, 50);
             this.labelBlue.TabIndex = 7;
+            this.toolTipHelper.SetToolTip(this.labelBlue, "Синий");
             this.labelBlue.Click += new System.EventHandler(this.labelBlue_Click);
             // 
             // labelSkyBlue
@@ -319,6 +332,7 @@
             this.labelSkyBlue.Name = "labelSkyBlue";
             this.labelSkyBlue.Size = new System.Drawing.Size(70, 50);
             this.labelSkyBlue.TabIndex = 6;
+            this.toolTipHelper.SetToolTip(this.labelSkyBlue, "Бирюзовый");
             this.labelSkyBlue.Click += new System.EventHandler(this.labelSkyBlue_Click);
             // 
             // labelDarkGreen
@@ -328,6 +342,7 @@
             this.labelDarkGreen.Name = "labelDarkGreen";
             this.labelDarkGreen.Size = new System.Drawing.Size(70, 50);
             this.labelDarkGreen.TabIndex = 5;
+            this.toolTipHelper.SetToolTip(this.labelDarkGreen, "Тёмно-зелёный");
             this.labelDarkGreen.Click += new System.EventHandler(this.labelDarkGreen_Click);
             // 
             // labelLightGreen
@@ -337,6 +352,7 @@
             this.labelLightGreen.Name = "labelLightGreen";
             this.labelLightGreen.Size = new System.Drawing.Size(70, 50);
             this.labelLightGreen.TabIndex = 4;
+            this.toolTipHelper.SetToolTip(this.labelLightGreen, "Светло-зелёный");
             this.labelLightGreen.Click += new System.EventHandler(this.labelLightGreen_Click);
             // 
             // labelBrown
@@ -346,6 +362,7 @@
             this.labelBrown.Name = "labelBrown";
             this.labelBrown.Size = new System.Drawing.Size(70, 50);
             this.labelBrown.TabIndex = 3;
+            this.toolTipHelper.SetToolTip(this.labelBrown, "Коричневый");
             this.labelBrown.Click += new System.EventHandler(this.labelBrown_Click);
             // 
             // labelYellow
@@ -355,6 +372,7 @@
             this.labelYellow.Name = "labelYellow";
             this.labelYellow.Size = new System.Drawing.Size(70, 50);
             this.labelYellow.TabIndex = 2;
+            this.toolTipHelper.SetToolTip(this.labelYellow, "Жёлтый");
             this.labelYellow.Click += new System.EventHandler(this.labelYellow_Click);
             // 
             // labelOrange
@@ -364,6 +382,7 @@
             this.labelOrange.Name = "labelOrange";
             this.labelOrange.Size = new System.Drawing.Size(70, 50);
             this.labelOrange.TabIndex = 1;
+            this.toolTipHelper.SetToolTip(this.labelOrange, "Оранжевый");
             this.labelOrange.Click += new System.EventHandler(this.labelOrange_Click);
             // 
             // labelRed
@@ -373,6 +392,7 @@
             this.labelRed.Name = "labelRed";
             this.labelRed.Size = new System.Drawing.Size(70, 50);
             this.labelRed.TabIndex = 0;
+            this.toolTipHelper.SetToolTip(this.labelRed, "Красный");
             this.labelRed.Click += new System.EventHandler(this.labelRed_Click);
             // 
             // mainPictureBox
@@ -566,6 +586,7 @@
         private System.Windows.Forms.Label labelLine;
         private System.Windows.Forms.Label labelEllipse;
         private System.Windows.Forms.Label labelRect;
+        private System.Windows.Forms.ToolTip toolTipHelper;
     }
 }
 
