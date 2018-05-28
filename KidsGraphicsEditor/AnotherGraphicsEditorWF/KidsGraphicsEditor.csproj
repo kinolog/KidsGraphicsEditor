@@ -73,6 +73,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Icons\Thumbs.db" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -87,6 +88,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icons\Arrow_left.png" />
+    <Content Include="Icons\Arrow_right.png" />
+    <Content Include="Icons\Brush.png" />
+    <Content Include="Icons\Ellipse.png" />
+    <Content Include="Icons\Erazer.png" />
+    <Content Include="Icons\Fill.png" />
+    <Content Include="Icons\Line.png" />
+    <Content Include="Icons\Open.png" />
+    <Content Include="Icons\Pencil.png" />
+    <Content Include="Icons\Rectangle.png" />
     <Content Include="Image1.bmp" />
   </ItemGroup>
   <ItemGroup>

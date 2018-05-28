@@ -148,84 +148,90 @@
             this.toolsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.toolsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.toolsPanel.Controls.Add(this.labelEraser, 1, 0);
-            this.toolsPanel.Controls.Add(this.labelPencil, 0, 0);
             this.toolsPanel.Controls.Add(this.labelFill, 0, 1);
             this.toolsPanel.Controls.Add(this.labelLine, 1, 1);
             this.toolsPanel.Controls.Add(this.labelEllipse, 1, 2);
             this.toolsPanel.Controls.Add(this.labelRect, 0, 2);
-            this.toolsPanel.Location = new System.Drawing.Point(22, 23);
+            this.toolsPanel.Controls.Add(this.labelPencil, 0, 0);
+            this.toolsPanel.Location = new System.Drawing.Point(22, 21);
             this.toolsPanel.Name = "toolsPanel";
             this.toolsPanel.RowCount = 3;
             this.toolsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.toolsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.toolsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.toolsPanel.Size = new System.Drawing.Size(137, 134);
+            this.toolsPanel.Size = new System.Drawing.Size(137, 178);
             this.toolsPanel.TabIndex = 4;
             // 
             // labelEraser
             // 
             this.labelEraser.AutoSize = true;
+            this.labelEraser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelEraser.Image = ((System.Drawing.Image)(resources.GetObject("labelEraser.Image")));
             this.labelEraser.Location = new System.Drawing.Point(71, 0);
             this.labelEraser.Name = "labelEraser";
-            this.labelEraser.Size = new System.Drawing.Size(59, 13);
+            this.labelEraser.Size = new System.Drawing.Size(63, 59);
             this.labelEraser.TabIndex = 1;
-            this.labelEraser.Text = "labelEraser";
             this.labelEraser.Click += new System.EventHandler(this.labelEraser_Click);
             // 
             // labelPencil
             // 
             this.labelPencil.AutoSize = true;
+            this.labelPencil.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelPencil.Image = ((System.Drawing.Image)(resources.GetObject("labelPencil.Image")));
             this.labelPencil.Location = new System.Drawing.Point(3, 0);
             this.labelPencil.Name = "labelPencil";
-            this.labelPencil.Size = new System.Drawing.Size(58, 13);
+            this.labelPencil.Size = new System.Drawing.Size(62, 59);
             this.labelPencil.TabIndex = 0;
-            this.labelPencil.Text = "labelPencil";
             this.labelPencil.Click += new System.EventHandler(this.labelPencil_Click);
             // 
             // labelFill
             // 
             this.labelFill.AutoSize = true;
-            this.labelFill.Location = new System.Drawing.Point(3, 44);
+            this.labelFill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelFill.Image = ((System.Drawing.Image)(resources.GetObject("labelFill.Image")));
+            this.labelFill.Location = new System.Drawing.Point(3, 59);
             this.labelFill.Name = "labelFill";
-            this.labelFill.Size = new System.Drawing.Size(41, 13);
+            this.labelFill.Size = new System.Drawing.Size(62, 59);
             this.labelFill.TabIndex = 5;
-            this.labelFill.Text = "labelFill";
             this.labelFill.Click += new System.EventHandler(this.labelFill_Click);
             // 
             // labelLine
             // 
             this.labelLine.AutoSize = true;
-            this.labelLine.Location = new System.Drawing.Point(71, 44);
+            this.labelLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelLine.Image = ((System.Drawing.Image)(resources.GetObject("labelLine.Image")));
+            this.labelLine.Location = new System.Drawing.Point(71, 59);
             this.labelLine.Name = "labelLine";
-            this.labelLine.Size = new System.Drawing.Size(49, 13);
+            this.labelLine.Size = new System.Drawing.Size(63, 59);
             this.labelLine.TabIndex = 2;
-            this.labelLine.Text = "labelLine";
             this.labelLine.Click += new System.EventHandler(this.labelLine_Click);
             // 
             // labelEllipse
             // 
             this.labelEllipse.AutoSize = true;
-            this.labelEllipse.Location = new System.Drawing.Point(71, 88);
+            this.labelEllipse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelEllipse.Image = ((System.Drawing.Image)(resources.GetObject("labelEllipse.Image")));
+            this.labelEllipse.Location = new System.Drawing.Point(71, 118);
             this.labelEllipse.Name = "labelEllipse";
-            this.labelEllipse.Size = new System.Drawing.Size(59, 13);
+            this.labelEllipse.Size = new System.Drawing.Size(63, 60);
             this.labelEllipse.TabIndex = 4;
-            this.labelEllipse.Text = "labelEllipse";
             this.labelEllipse.Click += new System.EventHandler(this.labelEllipse_Click);
             // 
             // labelRect
             // 
             this.labelRect.AutoSize = true;
-            this.labelRect.Location = new System.Drawing.Point(3, 88);
+            this.labelRect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelRect.Image = ((System.Drawing.Image)(resources.GetObject("labelRect.Image")));
+            this.labelRect.Location = new System.Drawing.Point(3, 118);
             this.labelRect.Name = "labelRect";
-            this.labelRect.Size = new System.Drawing.Size(52, 13);
+            this.labelRect.Size = new System.Drawing.Size(62, 60);
             this.labelRect.TabIndex = 3;
-            this.labelRect.Text = "labelRect";
             this.labelRect.Click += new System.EventHandler(this.labelRect_Click);
             // 
             // labelWidth
             // 
             this.labelWidth.AutoSize = true;
-            this.labelWidth.Location = new System.Drawing.Point(62, 186);
+            this.labelWidth.Location = new System.Drawing.Point(63, 211);
             this.labelWidth.Name = "labelWidth";
             this.labelWidth.Size = new System.Drawing.Size(53, 13);
             this.labelWidth.TabIndex = 3;
@@ -233,7 +239,7 @@
             // 
             // lineThicknessTrackBar
             // 
-            this.lineThicknessTrackBar.Location = new System.Drawing.Point(18, 202);
+            this.lineThicknessTrackBar.Location = new System.Drawing.Point(19, 227);
             this.lineThicknessTrackBar.Maximum = 15;
             this.lineThicknessTrackBar.Minimum = 3;
             this.lineThicknessTrackBar.Name = "lineThicknessTrackBar";
@@ -257,7 +263,7 @@
             this.colorsPanel.Controls.Add(this.labelYellow);
             this.colorsPanel.Controls.Add(this.labelOrange);
             this.colorsPanel.Controls.Add(this.labelRed);
-            this.colorsPanel.Location = new System.Drawing.Point(22, 261);
+            this.colorsPanel.Location = new System.Drawing.Point(22, 284);
             this.colorsPanel.Name = "colorsPanel";
             this.colorsPanel.Size = new System.Drawing.Size(140, 302);
             this.colorsPanel.TabIndex = 1;
