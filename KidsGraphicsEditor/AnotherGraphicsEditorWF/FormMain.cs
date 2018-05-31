@@ -40,7 +40,12 @@ namespace AnotherGraphicsEditorWF
         LineTool line;
         EllipseTool ellipse;
         FillTool fill;
-        
+
+        FormLoadTemplate loadTemplate;
+        List<string> templateFiles = null;
+        string templateBackground = null;
+        string templateName = null;
+
         public FormMain()
         {                      
             InitializeComponent();
@@ -83,6 +88,9 @@ namespace AnotherGraphicsEditorWF
             toolsList.Add("labelLine", line);
             toolsList.Add("labelEllipse", ellipse);
             toolsList.Add("labelFill", fill);
+
+            loadTemplate = new FormLoadTemplate();
+            
         }
 
         private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -342,6 +350,9 @@ namespace AnotherGraphicsEditorWF
             BackgroundImage = null; //is it correct way to clear BackgroundImage of the form?
             templatePanel.Enabled = false;
             templatePanel.Visible = false;
+            templateFiles = null;
+            templateBackground = null;
+            templateName = null;
         }
 
         private void buttonStepBack_Click(object sender, EventArgs e)
@@ -423,14 +434,18 @@ namespace AnotherGraphicsEditorWF
         private void showTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //показать диалог
-            DialogResult res = openTemplateDialog.ShowDialog();
+            DialogResult res = loadTemplate.ShowDialog();
             if (res == DialogResult.OK)
             {
+                templateFiles = loadTemplate.TemplateFiles;
+                templateBackground = loadTemplate.TemplateBackground;
+                templateName = loadTemplate.TemplateName;
+
                 string template = openTemplateDialog.FileName;
                 //открыть выбранный шаблон
                 isTemplateOn = true;
                 templatePanel.Enabled = true;
-                Image img = new Bitmap(openTemplateDialog.FileName);
+                Image img = new Bitmap(templateFiles[0]);
 
                 //if ((img.Height !=600) || (img.Width!=1100)) for the halftransparent
                 //if ((img.Height !=250) || (img.Width!=200)) for the upper right corner
