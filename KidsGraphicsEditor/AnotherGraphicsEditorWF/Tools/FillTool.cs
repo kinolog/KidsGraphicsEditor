@@ -12,7 +12,7 @@ namespace AnotherGraphicsEditorWF.Tools
         public FillTool() : base()
         { }
 
-        public override void Draw(Bitmap b, Color curColor, Color setColor, int x, int y)
+        public void Draw(Bitmap b, Color curColor, Color setColor, int x, int y)
         {
             toolsPen.Color = setColor;
             PixelSetQueue(b, curColor, setColor, x, y);

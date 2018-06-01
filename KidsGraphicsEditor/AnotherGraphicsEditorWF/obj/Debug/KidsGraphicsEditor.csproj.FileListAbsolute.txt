@@ -38,3 +38,4 @@ C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphic
 C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.exe
 C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.pdb
 C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.FormLoadTemplate.resources
+C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.FormLoadTemplate.resources

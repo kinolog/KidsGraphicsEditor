@@ -100,18 +100,29 @@
     <Content Include="Icons\Arrow_left.png" />
     <Content Include="Icons\Arrow_right.png" />
     <Content Include="Icons\Brush.png" />
+    <Content Include="Icons\Close.png" />
     <Content Include="Icons\Ellipse.png" />
     <Content Include="Icons\Erazer.png" />
+    <Content Include="Icons\Expand.png" />
+    <Content Include="Icons\Eye-hide.png" />
     <Content Include="Icons\Fill.png" />
     <Content Include="Icons\Line.png" />
     <Content Include="Icons\Open.png" />
     <Content Include="Icons\Pencil.png" />
     <Content Include="Icons\Rectangle.png" />
+    <Content Include="Icons\Shrink.png" />
     <Content Include="Logo.ico" />
+    <Content Include="Templates\Rabbit\1.jpg" />
+    <Content Include="Templates\Rabbit\2.jpg" />
+    <Content Include="Templates\Rabbit\3.jpg" />
+    <Content Include="Templates\Rabbit\4.jpg" />
+    <Content Include="Templates\Rabbit\5.jpg" />
+    <Content Include="Templates\Rabbit\6.jpg" />
+    <Content Include="Templates\Rabbit\background.jpg" />
+    <Content Include="Templates\Rabbit\icon.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TemplateIcons\" />
-    <Folder Include="Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

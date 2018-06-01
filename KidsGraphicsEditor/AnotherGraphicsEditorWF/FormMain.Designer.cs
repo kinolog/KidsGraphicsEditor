@@ -37,6 +37,7 @@
             this.templateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsAndColorsPanel = new System.Windows.Forms.Panel();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.toolsPanel = new System.Windows.Forms.TableLayoutPanel();
             this.labelEraser = new System.Windows.Forms.Label();
             this.labelFill = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@
             this.openImageDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveImageDialog = new System.Windows.Forms.SaveFileDialog();
             this.templatePanel = new System.Windows.Forms.Panel();
+            this.buttonShowHideTemp = new System.Windows.Forms.Button();
             this.buttonTemplateClose = new System.Windows.Forms.Button();
             this.buttonTemplateMinimize = new System.Windows.Forms.Button();
             this.buttonStepBack = new System.Windows.Forms.Button();
@@ -134,14 +136,29 @@
             // 
             // toolsAndColorsPanel
             // 
+            this.toolsAndColorsPanel.Controls.Add(this.buttonClear);
             this.toolsAndColorsPanel.Controls.Add(this.toolsPanel);
             this.toolsAndColorsPanel.Controls.Add(this.labelWidth);
             this.toolsAndColorsPanel.Controls.Add(this.lineThicknessTrackBar);
             this.toolsAndColorsPanel.Controls.Add(this.colorsPanel);
+            this.toolsAndColorsPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolsAndColorsPanel.Location = new System.Drawing.Point(0, 24);
             this.toolsAndColorsPanel.Name = "toolsAndColorsPanel";
-            this.toolsAndColorsPanel.Size = new System.Drawing.Size(188, 600);
+            this.toolsAndColorsPanel.Size = new System.Drawing.Size(188, 646);
             this.toolsAndColorsPanel.TabIndex = 1;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.BackColor = System.Drawing.Color.PeachPuff;
+            this.buttonClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonClear.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonClear.Location = new System.Drawing.Point(28, 602);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(128, 23);
+            this.buttonClear.TabIndex = 6;
+            this.buttonClear.Text = "Очистить рисунок";
+            this.buttonClear.UseVisualStyleBackColor = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // toolsPanel
             // 
@@ -396,7 +413,7 @@
             // 
             // mainPictureBox
             // 
-            this.mainPictureBox.BackColor = System.Drawing.Color.White;
+            this.mainPictureBox.BackColor = System.Drawing.Color.Transparent;
             this.mainPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.mainPictureBox.Location = new System.Drawing.Point(0, 0);
             this.mainPictureBox.Name = "mainPictureBox";
@@ -418,10 +435,12 @@
             // 
             this.saveImageDialog.DefaultExt = "png";
             this.saveImageDialog.Filter = "Изображения|*.jpg; *.jpeg; *.png; *.bmp";
+            this.saveImageDialog.FilterIndex = 2;
             // 
             // templatePanel
             // 
             this.templatePanel.BackColor = System.Drawing.Color.PeachPuff;
+            this.templatePanel.Controls.Add(this.buttonShowHideTemp);
             this.templatePanel.Controls.Add(this.buttonTemplateClose);
             this.templatePanel.Controls.Add(this.buttonTemplateMinimize);
             this.templatePanel.Controls.Add(this.buttonStepBack);
@@ -433,16 +452,30 @@
             this.templatePanel.Size = new System.Drawing.Size(280, 347);
             this.templatePanel.TabIndex = 3;
             // 
+            // buttonShowHideTemp
+            // 
+            this.buttonShowHideTemp.BackColor = System.Drawing.Color.LightSalmon;
+            this.buttonShowHideTemp.FlatAppearance.BorderSize = 0;
+            this.buttonShowHideTemp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonShowHideTemp.Image = ((System.Drawing.Image)(resources.GetObject("buttonShowHideTemp.Image")));
+            this.buttonShowHideTemp.Location = new System.Drawing.Point(130, 5);
+            this.buttonShowHideTemp.Name = "buttonShowHideTemp";
+            this.buttonShowHideTemp.Size = new System.Drawing.Size(30, 25);
+            this.buttonShowHideTemp.TabIndex = 9;
+            this.toolTipHelper.SetToolTip(this.buttonShowHideTemp, "Показать шаблон");
+            this.buttonShowHideTemp.UseVisualStyleBackColor = false;
+            this.buttonShowHideTemp.Click += new System.EventHandler(this.buttonShowHideTemp_Click);
+            // 
             // buttonTemplateClose
             // 
             this.buttonTemplateClose.BackColor = System.Drawing.Color.LightSalmon;
             this.buttonTemplateClose.FlatAppearance.BorderSize = 0;
             this.buttonTemplateClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemplateClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemplateClose.Image")));
             this.buttonTemplateClose.Location = new System.Drawing.Point(237, 4);
             this.buttonTemplateClose.Name = "buttonTemplateClose";
             this.buttonTemplateClose.Size = new System.Drawing.Size(30, 25);
             this.buttonTemplateClose.TabIndex = 8;
-            this.buttonTemplateClose.Text = "x";
             this.buttonTemplateClose.UseVisualStyleBackColor = false;
             this.buttonTemplateClose.Click += new System.EventHandler(this.buttonTemplateClose_Click);
             // 
@@ -451,11 +484,11 @@
             this.buttonTemplateMinimize.BackColor = System.Drawing.Color.LightSalmon;
             this.buttonTemplateMinimize.FlatAppearance.BorderSize = 0;
             this.buttonTemplateMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemplateMinimize.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemplateMinimize.Image")));
             this.buttonTemplateMinimize.Location = new System.Drawing.Point(195, 4);
             this.buttonTemplateMinimize.Name = "buttonTemplateMinimize";
             this.buttonTemplateMinimize.Size = new System.Drawing.Size(30, 25);
             this.buttonTemplateMinimize.TabIndex = 7;
-            this.buttonTemplateMinimize.Text = "m";
             this.buttonTemplateMinimize.UseVisualStyleBackColor = false;
             // 
             // buttonStepBack
@@ -496,9 +529,10 @@
             // labelTemplateName
             // 
             this.labelTemplateName.AutoSize = true;
-            this.labelTemplateName.Location = new System.Drawing.Point(4, 4);
+            this.labelTemplateName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTemplateName.Location = new System.Drawing.Point(3, 10);
             this.labelTemplateName.Name = "labelTemplateName";
-            this.labelTemplateName.Size = new System.Drawing.Size(74, 13);
+            this.labelTemplateName.Size = new System.Drawing.Size(108, 20);
             this.labelTemplateName.TabIndex = 0;
             this.labelTemplateName.Text = "ИмяШаблона";
             // 
@@ -511,7 +545,7 @@
             this.mainImagePanel.Controls.Add(this.mainPictureBox);
             this.mainImagePanel.Location = new System.Drawing.Point(187, 24);
             this.mainImagePanel.Name = "mainImagePanel";
-            this.mainImagePanel.Size = new System.Drawing.Size(1110, 610);
+            this.mainImagePanel.Size = new System.Drawing.Size(1100, 600);
             this.mainImagePanel.TabIndex = 4;
             // 
             // FormMain
@@ -519,7 +553,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1297, 633);
+            this.ClientSize = new System.Drawing.Size(1297, 670);
             this.Controls.Add(this.mainImagePanel);
             this.Controls.Add(this.toolsAndColorsPanel);
             this.Controls.Add(this.mainMenuStrip);
@@ -591,6 +625,8 @@
         private System.Windows.Forms.Label labelEllipse;
         private System.Windows.Forms.Label labelRect;
         private System.Windows.Forms.ToolTip toolTipHelper;
+        private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonShowHideTemp;
     }
 }
 

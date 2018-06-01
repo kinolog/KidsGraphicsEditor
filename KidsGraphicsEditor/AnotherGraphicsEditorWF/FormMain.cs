@@ -15,7 +15,8 @@ namespace AnotherGraphicsEditorWF
     public partial class FormMain : Form
     {
         bool isImageSaved;
-        
+
+        bool templateShown;
         bool isTemplateOn;
         int curTemplateSize, curTemplateStep;
                 
@@ -25,6 +26,8 @@ namespace AnotherGraphicsEditorWF
         Bitmap snapshot;
         Bitmap tempDraw;
         Bitmap backPic;
+
+        bool refreshFlag;        
 
         int width;        
         Color color;
@@ -52,24 +55,22 @@ namespace AnotherGraphicsEditorWF
             //WindowState = FormWindowState.Maximized;
             openImageDialog.Title = "Открыть изображение";
             saveImageDialog.Title = "Сохранить изображение";
-            
-            isTemplateOn = false;
+
+            templateShown = false;
+            isTemplateOn = false;            
             curTemplateSize = -1;
             curTemplateStep = -1;
             BackgroundImage = null; //is it correct way to clear BackgroundImage of the form?
             templatePanel.Enabled = false;
-            templatePanel.Visible = false;
+            templatePanel.Visible = false;            
             
-            isImageSaved = true;
-
-            backPic = null;
+            isImageSaved = false;
+            
             snapshot = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
-            // cover all space with white
-            Graphics g = Graphics.FromImage(snapshot);
-            g.FillRectangle(new SolidBrush(Color.White), 0, 0, mainPictureBox.Width, mainPictureBox.Height);
-            g.Dispose();
+            backPic = new Bitmap(mainImagePanel.Width, mainImagePanel.Height);
 
             mouseDown = false;
+            refreshFlag = false;
             activeToolControlName = null;
             activeColorControlName = null;
             width = lineThicknessTrackBar.Value;
@@ -136,7 +137,7 @@ namespace AnotherGraphicsEditorWF
                     case DialogResult.Yes:
                         {
                             DialogResult resDialog = saveImageDialog.ShowDialog();
-                            ImageFormat format = ImageFormat.Png;
+                            ImageFormat imformat = ImageFormat.Png;
                             if (resDialog == DialogResult.OK)
                             {
                                 string ext = System.IO.Path.GetExtension(saveImageDialog.FileName);
@@ -144,13 +145,18 @@ namespace AnotherGraphicsEditorWF
                                 {
                                     case ".jpg":
                                     case ".jpeg":
-                                        format = ImageFormat.Jpeg;
+                                        imformat = ImageFormat.Jpeg;
                                         break;
                                     case ".bmp":
-                                        format = ImageFormat.Bmp;
+                                        imformat = ImageFormat.Bmp;
                                         break;
                                 }
-                                mainPictureBox.Image.Save(saveImageDialog.FileName, format);
+                                
+                                Bitmap picToSave = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
+                                mainPictureBox.DrawToBitmap(picToSave, new Rectangle(0, 0, backPic.Width, backPic.Height));                                
+                                // as we got transparent background - have to change it to white
+                                //ReplaceTransparentWithWhite(ref picToSave);
+                                picToSave.Save(saveImageDialog.FileName, imformat);
                                 isImageSaved = true;
                             }
                         }
@@ -365,22 +371,57 @@ namespace AnotherGraphicsEditorWF
 
         }
 
+        private void buttonShowHideTemp_Click(object sender, EventArgs e)
+        {
+            if (!templateShown)
+            {
+                mainImagePanel.BackgroundImage = backPic;
+                templateShown = true;
+            }
+            else
+            {
+                mainImagePanel.BackgroundImage = null;
+                templateShown = false;
+            }
+
+        }
+
         private void mainPictureBox_Paint(object sender, PaintEventArgs e)
         {
-            if ((tempDraw != null) && (activeToolControlName != null) && color != null)
+            if (tempDraw != null && activeToolControlName != null && color != null)
             {
-                // don't need to fix the changes immediately, only when button is released
-                if (activeToolControlName != "labelPencil" && activeToolControlName != "labelEraser")
-                    tempDraw = (Bitmap)snapshot.Clone();
-                Graphics g = Graphics.FromImage(tempDraw);                
-                // special signature for fill
-                if (activeToolControlName == "labelFill")
-                    toolsList[activeToolControlName].Draw(tempDraw, tempDraw.GetPixel(x1, y1), color, x1, y1);
+                if (refreshFlag)
+                {
+                    for (int i = 0; i < mainPictureBox.Width; i++)
+                    {
+                        for (int j = 0; j < mainPictureBox.Height; j++)
+                        {
+                            snapshot.SetPixel(i, j, Color.Transparent);
+                        }
+                    }
+                    refreshFlag = false;
+                    e.Graphics.DrawImageUnscaled(snapshot, 0, 0);
+                }
                 else
-                    toolsList[activeToolControlName].Draw(g, color, width, ref x1, ref y1, ref x2, ref y2);
-                e.Graphics.DrawImageUnscaled(tempDraw, 0, 0);
-                g.Dispose();
-            }            
+                {
+                    // don't need to fix the changes immediately, only when button is released
+                    if (activeToolControlName != "labelPencil" && activeToolControlName != "labelEraser")
+                        tempDraw = (Bitmap)snapshot.Clone();
+                    Graphics g = Graphics.FromImage(tempDraw);
+
+                    // special signature for fill
+                    if (activeToolControlName == "labelFill")
+                        ((FillTool)toolsList[activeToolControlName]).Draw(tempDraw, tempDraw.GetPixel(x1, y1), color, x1, y1);
+                    else
+                        if (activeToolControlName == "labelEraser")
+                        ((EraserTool)toolsList[activeToolControlName]).Draw(ref tempDraw, width, ref x1, ref y1, ref x2, ref y2);
+                    else
+                        toolsList[activeToolControlName].Draw(g, color, width, ref x1, ref y1, ref x2, ref y2);
+
+                    e.Graphics.DrawImageUnscaled(tempDraw, 0, 0);
+                    g.Dispose();
+                }
+            }
         }
 
         // order: mouseDown -> mouseClick -> mouseUp
@@ -430,7 +471,6 @@ namespace AnotherGraphicsEditorWF
             width = lineThicknessTrackBar.Value;
         }
 
-
         private void showTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //показать диалог
@@ -440,51 +480,42 @@ namespace AnotherGraphicsEditorWF
                 templateFiles = loadTemplate.TemplateFiles;
                 templateBackground = loadTemplate.TemplateBackground;
                 templateName = loadTemplate.TemplateName;
+                labelTemplateName.Text = templateName;
 
-                string template = openTemplateDialog.FileName;
+                //string template = openTemplateDialog.FileName;    //unnecessary line
                 //открыть выбранный шаблон
                 isTemplateOn = true;
                 templatePanel.Enabled = true;
                 Image img = new Bitmap(templateFiles[0]);
+                backPic = new Bitmap(templateFiles[templateFiles.Count - 2]);
 
-                //if ((img.Height !=600) || (img.Width!=1100)) for the halftransparent
-                //if ((img.Height !=250) || (img.Width!=200)) for the upper right corner
+                // size reminder
+                //if ((backPic.Height !=600) || (backPic.Width!=1100)) 
+                //if ((img.Height !=250) || (img.Width!=200))
 
+                templateShown = true;
                 templatePreviewBox.BackgroundImage = img;
+                mainImagePanel.BackgroundImage = backPic;
 
-                //backPic = new Bitmap(img);
-                //mainPictureBox.Invalidate();
-                //mainPictureBox.Update();
-
-                //mainImagePanel.Controls.SetChildIndex(templatePanel, 0);
-                //mainImagePanel.Controls.SetChildIndex(mainPictureBox, 1);
-                //mainImagePanel.Controls.SetChildIndex(backPictureBox, 1);
-
-                //mainImagePanel.BackgroundImage = img;
-                //mainPictureBox.BackgroundImage = img;
-                //mainPictureBox.BringToFront();
-
-                //как сделать так, чтобы img отображалось только 1 раз на backgroundimage?
                 templatePanel.Visible = true;
-            }
+            }           
         }
 
-        private Bitmap CombineLayers()
+        private void buttonClear_Click(object sender, EventArgs e)
         {
-            tempDraw = (Bitmap)snapshot.Clone();            
+            refreshFlag = true;
+            mainPictureBox.Invalidate();
+            mainPictureBox.Update();
+        }
 
-            Bitmap res = new Bitmap(backPic);
-            
-            for (int i = 0; i < mainPictureBox.Width; i++)
+        private void ReplaceTransparentWithWhite(ref Bitmap b)
+        {
+            for (int x = 0; x<b.Width; x++)
             {
-                for (int j = 0; j < mainPictureBox.Height; j++)
-                {
-                    if ((tempDraw.GetPixel(i, j) != Color.Transparent) && (tempDraw.GetPixel(i, j) != Color.White) && (tempDraw.GetPixel(i, j) != mainPictureBox.BackColor) &&
-                        (tempDraw.GetPixel(i, j).A != 0) && (tempDraw.GetPixel(i, j).R != 0) && (tempDraw.GetPixel(i, j).G != 0) && (tempDraw.GetPixel(i, j).B != 0))
-                        res.SetPixel(i, j, tempDraw.GetPixel(i, j));                    
-                }
+                for (int y = 0; y < b.Height; y++)
+                    if (b.GetPixel(x, y) == Color.Transparent)
+                        b.SetPixel(x, y, Color.White);
             }
-            return res;
         }
     }
 }

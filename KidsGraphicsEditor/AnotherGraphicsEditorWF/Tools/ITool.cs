@@ -15,8 +15,6 @@ namespace AnotherGraphicsEditorWF.Tools
         public ITool(int pensWidth) { toolsPen = new Pen(Color.White, pensWidth); }
         public ITool(Color setColor, int pensWidth) { toolsPen = new Pen(setColor, pensWidth); }
         public virtual void Draw(Graphics g, Color setColor, int width, ref int x1, ref int y1, ref int x2, ref int y2)
-        { }
-        public virtual void Draw(Bitmap b, Color curColor, Color setColor, int x, int y)
-        { }
+        { }       
     }
 }

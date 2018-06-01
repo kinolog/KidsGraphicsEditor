@@ -77,7 +77,8 @@ namespace AnotherGraphicsEditorWF
                     //наибольшим именем
 
                     templateFiles.Add(files);
-                    templateNames.Add(Path.GetDirectoryName(template));
+                    templateNames.Add(template.Remove(0, (Path.GetDirectoryName(template).Length)).Replace("\\", ""));                    
+                    //templateNames.Add(Path.GetDirectoryName(template));
                 }
             }
 
@@ -116,7 +117,7 @@ namespace AnotherGraphicsEditorWF
             if (chosen_template != -1)
                 this.Close();
             else
-                MessageBox.Show("Сначала выбери шаблон");
+                MessageBox.Show("Сначала выберите шаблон!");
         }
 
         private void pictureBox_MouseClick(object sender, MouseEventArgs e)
