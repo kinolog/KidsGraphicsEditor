@@ -26,8 +26,10 @@ namespace AnotherGraphicsEditorWF
         Bitmap snapshot;
         Bitmap tempDraw;
         Bitmap backPic;
+        Image loadPic;
 
-        bool refreshFlag;        
+        bool clearFlag;
+        bool loadPicFlag;
 
         int width;        
         Color color;
@@ -68,9 +70,11 @@ namespace AnotherGraphicsEditorWF
             
             snapshot = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
             backPic = new Bitmap(mainImagePanel.Width, mainImagePanel.Height);
+            loadPic = null;
 
             mouseDown = false;
-            refreshFlag = false;
+            clearFlag = false;
+            loadPicFlag = false;
             activeToolControlName = null;
             activeColorControlName = null;
             width = lineThicknessTrackBar.Value;
@@ -98,17 +102,17 @@ namespace AnotherGraphicsEditorWF
         {
             if (openImageDialog.ShowDialog()== DialogResult.OK)
             {
-                Image img = new Bitmap(openImageDialog.FileName);
-                mainPictureBox.Height = Math.Max(img.Height, mainPictureBox.Height);
-                mainPictureBox.Width = Math.Max(img.Width, mainPictureBox.Width);
-                mainPictureBox.Image = img;
+                loadPic = new Bitmap(openImageDialog.FileName);                               
+                loadPicFlag = true;
+                mainPictureBox.Invalidate();
+                mainPictureBox.Update();
             }            
         }
 
         private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult res = saveImageDialog.ShowDialog();
-            ImageFormat format = ImageFormat.Png;
+            ImageFormat imformat = ImageFormat.Png;
             if (res == DialogResult.OK)
             {
                 string ext = System.IO.Path.GetExtension(saveImageDialog.FileName);
@@ -116,13 +120,18 @@ namespace AnotherGraphicsEditorWF
                 {
                     case ".jpg":
                     case ".jpeg":
-                        format = ImageFormat.Jpeg;
+                        imformat = ImageFormat.Jpeg;
                         break;
                     case ".bmp":
-                        format = ImageFormat.Bmp;
+                        imformat = ImageFormat.Bmp;
                         break;
                 }
-                mainPictureBox.Image.Save(saveImageDialog.FileName, format);
+
+                Bitmap picToSave = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
+                mainPictureBox.DrawToBitmap(picToSave, new Rectangle(0, 0, backPic.Width, backPic.Height));
+                // as we got transparent background - have to change it to white
+                ReplaceTransparentWithWhite(ref picToSave);
+                picToSave.Save(saveImageDialog.FileName, imformat);
                 isImageSaved = true;
             }
         }
@@ -131,7 +140,7 @@ namespace AnotherGraphicsEditorWF
         {
             if (!isImageSaved)
             {
-                DialogResult res = MessageBox.Show("Может быть, ты хочешь сохранить картинку перед тем, как закроешь Рисовалочку?", "Сохранить картинку?", MessageBoxButtons.YesNoCancel);
+                DialogResult res = MessageBox.Show("Может быть, вы хотите сохранить картинку перед тем, как закрыть Рисовалочку?", "Сохранить картинку?", MessageBoxButtons.YesNoCancel);
                 switch (res)
                 {
                     case DialogResult.Yes:
@@ -155,7 +164,7 @@ namespace AnotherGraphicsEditorWF
                                 Bitmap picToSave = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
                                 mainPictureBox.DrawToBitmap(picToSave, new Rectangle(0, 0, backPic.Width, backPic.Height));                                
                                 // as we got transparent background - have to change it to white
-                                //ReplaceTransparentWithWhite(ref picToSave);
+                                ReplaceTransparentWithWhite(ref picToSave);
                                 picToSave.Save(saveImageDialog.FileName, imformat);
                                 isImageSaved = true;
                             }
@@ -388,9 +397,17 @@ namespace AnotherGraphicsEditorWF
 
         private void mainPictureBox_Paint(object sender, PaintEventArgs e)
         {
+            if (loadPicFlag)
+            {
+                snapshot = (Bitmap)loadPic;
+                e.Graphics.DrawImageUnscaled(snapshot, 0, 0);
+                loadPicFlag = false;
+            }
+            else
+
             if (tempDraw != null && activeToolControlName != null && color != null)
             {
-                if (refreshFlag)
+                if (clearFlag)
                 {
                     for (int i = 0; i < mainPictureBox.Width; i++)
                     {
@@ -399,9 +416,10 @@ namespace AnotherGraphicsEditorWF
                             snapshot.SetPixel(i, j, Color.Transparent);
                         }
                     }
-                    refreshFlag = false;
                     e.Graphics.DrawImageUnscaled(snapshot, 0, 0);
+                    clearFlag = false;
                 }
+
                 else
                 {
                     // don't need to fix the changes immediately, only when button is released
@@ -503,7 +521,7 @@ namespace AnotherGraphicsEditorWF
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            refreshFlag = true;
+            clearFlag = true;
             mainPictureBox.Invalidate();
             mainPictureBox.Update();
         }
