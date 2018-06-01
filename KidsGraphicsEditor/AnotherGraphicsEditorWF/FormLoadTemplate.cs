@@ -54,18 +54,18 @@ namespace AnotherGraphicsEditorWF
                 files.Sort();
                 if (files.Count != 0)
                 {
+                    templateBackground.Add(files[files.Count - 2]);
                     //в списке файлов: если есть файл icon.jpg, то записать его
                     //то же самое для фона
-                    int iconIndex = files.IndexOf("icon.jpg");
-                    int backIndex = files.IndexOf("background.jpg");
+                    
+                    int backIndex = files.IndexOf(template + "\\background.jpg");
                     if (backIndex != -1)
                     {
                         templateBackground.Add(files[backIndex]);
                         files.RemoveAt(backIndex);
                     }
-                    else
-                        templateBackground.Add(null);
 
+                    int iconIndex = files.IndexOf(template + "\\icon.jpg");
                     if (iconIndex != -1)
                     {
                         templatePicture.Add(files[iconIndex]);

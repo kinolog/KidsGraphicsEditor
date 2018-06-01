@@ -17,8 +17,6 @@ namespace AnotherGraphicsEditorWF
         bool isImageSaved;
 
         bool templateShown;
-        bool isTemplateOn;
-        int curTemplateSize, curTemplateStep;
                 
         bool mouseDown;
         int x1, y1, x2, y2; //coordinates of the mouse
@@ -50,6 +48,7 @@ namespace AnotherGraphicsEditorWF
         List<string> templateFiles = null;
         string templateBackground = null;
         string templateName = null;
+        int currentTemplatePicture = -1;
 
         public FormMain()
         {                      
@@ -359,41 +358,7 @@ namespace AnotherGraphicsEditorWF
         }
         #endregion
 
-        private void buttonTemplateClose_Click(object sender, EventArgs e)
-        {
-            isTemplateOn = false;
-            BackgroundImage = null; //is it correct way to clear BackgroundImage of the form?
-            templatePanel.Enabled = false;
-            templatePanel.Visible = false;
-            templateFiles = null;
-            templateBackground = null;
-            templateName = null;
-        }
-
-        private void buttonStepBack_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonStepForward_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonShowHideTemp_Click(object sender, EventArgs e)
-        {
-            if (!templateShown)
-            {
-                mainImagePanel.BackgroundImage = backPic;
-                templateShown = true;
-            }
-            else
-            {
-                mainImagePanel.BackgroundImage = null;
-                templateShown = false;
-            }
-
-        }
+        
 
         private void mainPictureBox_Paint(object sender, PaintEventArgs e)
         {
@@ -489,6 +454,62 @@ namespace AnotherGraphicsEditorWF
             width = lineThicknessTrackBar.Value;
         }
 
+        #region TemplateOperations
+        private void buttonTemplateClose_Click(object sender, EventArgs e)
+        {
+            isTemplateOn = false;
+            BackgroundImage = null; //is it correct way to clear BackgroundImage of the form?
+            templatePanel.Enabled = false;
+            templatePanel.Visible = false;
+            templateFiles = null;
+            templateBackground = null;
+            templateName = null;
+            currentTemplatePicture = -1;
+        }
+
+        private void buttonStepBack_Click(object sender, EventArgs e)
+        {
+            if (currentTemplatePicture > 0)
+            {
+                currentTemplatePicture--;
+                if (currentTemplatePicture == templateFiles.Count - 2)
+                    buttonStepForward.Enabled = true;
+                Image img = new Bitmap(templateFiles[currentTemplatePicture]);
+                templatePreviewBox.BackgroundImage = img;
+                if (currentTemplatePicture == 0)
+                    buttonStepBack.Enabled = false;
+            }
+        }
+
+        private void buttonStepForward_Click(object sender, EventArgs e)
+        {
+            if (currentTemplatePicture < templateFiles.Count - 1)
+            {
+                currentTemplatePicture++;
+                if (currentTemplatePicture == 1)
+                    buttonStepBack.Enabled = true;
+                Image img = new Bitmap(templateFiles[currentTemplatePicture]);
+                templatePreviewBox.BackgroundImage = img;
+                if (currentTemplatePicture == templateFiles.Count - 1)
+                    buttonStepForward.Enabled = false;
+            }
+        }
+
+        private void buttonShowHideTemp_Click(object sender, EventArgs e)
+        {
+            if (!templateShown)
+            {
+                mainImagePanel.BackgroundImage = backPic;
+                templateShown = true;
+            }
+            else
+            {
+                mainImagePanel.BackgroundImage = null;
+                templateShown = false;
+            }
+
+        }
+
         private void showTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //показать диалог
@@ -500,12 +521,12 @@ namespace AnotherGraphicsEditorWF
                 templateName = loadTemplate.TemplateName;
                 labelTemplateName.Text = templateName;
 
-                //string template = openTemplateDialog.FileName;    //unnecessary line
                 //открыть выбранный шаблон
                 isTemplateOn = true;
                 templatePanel.Enabled = true;
                 Image img = new Bitmap(templateFiles[0]);
-                backPic = new Bitmap(templateFiles[templateFiles.Count - 2]);
+                currentTemplatePicture = 0;
+                backPic = new Bitmap(templateBackground);
 
                 // size reminder
                 //if ((backPic.Height !=600) || (backPic.Width!=1100)) 
@@ -514,10 +535,13 @@ namespace AnotherGraphicsEditorWF
                 templateShown = true;
                 templatePreviewBox.BackgroundImage = img;
                 mainImagePanel.BackgroundImage = backPic;
-
+                
+                buttonStepBack.Enabled = false;
+                buttonStepForward.Enabled = true;
                 templatePanel.Visible = true;
             }           
         }
+        #endregion
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
