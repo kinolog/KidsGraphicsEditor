@@ -74,6 +74,11 @@
             this.openTemplateDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainImagePanel = new System.Windows.Forms.Panel();
             this.toolTipHelper = new System.Windows.Forms.ToolTip(this.components);
+            this.templatePanelMinimized = new System.Windows.Forms.Panel();
+            this.labelTemplateNameMinimized = new System.Windows.Forms.Label();
+            this.buttonShowHideMinimized = new System.Windows.Forms.Button();
+            this.buttonTemplateMaximize = new System.Windows.Forms.Button();
+            this.buttonTempCloseMinimized = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             this.toolsAndColorsPanel.SuspendLayout();
             this.toolsPanel.SuspendLayout();
@@ -83,6 +88,7 @@
             this.templatePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.templatePreviewBox)).BeginInit();
             this.mainImagePanel.SuspendLayout();
+            this.templatePanelMinimized.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -490,6 +496,7 @@
             this.buttonTemplateMinimize.Size = new System.Drawing.Size(30, 25);
             this.buttonTemplateMinimize.TabIndex = 7;
             this.buttonTemplateMinimize.UseVisualStyleBackColor = false;
+            this.buttonTemplateMinimize.Click += new System.EventHandler(this.buttonTemplateMinimize_Click);
             // 
             // buttonStepBack
             // 
@@ -541,12 +548,75 @@
             this.mainImagePanel.AutoScroll = true;
             this.mainImagePanel.BackColor = System.Drawing.Color.Transparent;
             this.mainImagePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.mainImagePanel.Controls.Add(this.templatePanelMinimized);
             this.mainImagePanel.Controls.Add(this.templatePanel);
             this.mainImagePanel.Controls.Add(this.mainPictureBox);
             this.mainImagePanel.Location = new System.Drawing.Point(187, 24);
             this.mainImagePanel.Name = "mainImagePanel";
             this.mainImagePanel.Size = new System.Drawing.Size(1100, 600);
             this.mainImagePanel.TabIndex = 4;
+            // 
+            // templatePanelMinimized
+            // 
+            this.templatePanelMinimized.BackColor = System.Drawing.Color.PeachPuff;
+            this.templatePanelMinimized.Controls.Add(this.buttonTempCloseMinimized);
+            this.templatePanelMinimized.Controls.Add(this.buttonTemplateMaximize);
+            this.templatePanelMinimized.Controls.Add(this.buttonShowHideMinimized);
+            this.templatePanelMinimized.Controls.Add(this.labelTemplateNameMinimized);
+            this.templatePanelMinimized.Location = new System.Drawing.Point(818, 3);
+            this.templatePanelMinimized.Name = "templatePanelMinimized";
+            this.templatePanelMinimized.Size = new System.Drawing.Size(280, 35);
+            this.templatePanelMinimized.TabIndex = 10;
+            // 
+            // labelTemplateNameMinimized
+            // 
+            this.labelTemplateNameMinimized.AutoSize = true;
+            this.labelTemplateNameMinimized.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTemplateNameMinimized.Location = new System.Drawing.Point(3, 10);
+            this.labelTemplateNameMinimized.Name = "labelTemplateNameMinimized";
+            this.labelTemplateNameMinimized.Size = new System.Drawing.Size(108, 20);
+            this.labelTemplateNameMinimized.TabIndex = 1;
+            this.labelTemplateNameMinimized.Text = "ИмяШаблона";
+            // 
+            // buttonShowHideMinimized
+            // 
+            this.buttonShowHideMinimized.BackColor = System.Drawing.Color.LightSalmon;
+            this.buttonShowHideMinimized.FlatAppearance.BorderSize = 0;
+            this.buttonShowHideMinimized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonShowHideMinimized.Image = ((System.Drawing.Image)(resources.GetObject("buttonShowHideMinimized.Image")));
+            this.buttonShowHideMinimized.Location = new System.Drawing.Point(130, 5);
+            this.buttonShowHideMinimized.Name = "buttonShowHideMinimized";
+            this.buttonShowHideMinimized.Size = new System.Drawing.Size(30, 25);
+            this.buttonShowHideMinimized.TabIndex = 10;
+            this.toolTipHelper.SetToolTip(this.buttonShowHideMinimized, "Показать шаблон");
+            this.buttonShowHideMinimized.UseVisualStyleBackColor = false;
+            this.buttonShowHideMinimized.Click += new System.EventHandler(this.buttonShowHideMinimized_Click);
+            // 
+            // buttonTemplateMaximize
+            // 
+            this.buttonTemplateMaximize.BackColor = System.Drawing.Color.LightSalmon;
+            this.buttonTemplateMaximize.FlatAppearance.BorderSize = 0;
+            this.buttonTemplateMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemplateMaximize.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemplateMaximize.Image")));
+            this.buttonTemplateMaximize.Location = new System.Drawing.Point(195, 4);
+            this.buttonTemplateMaximize.Name = "buttonTemplateMaximize";
+            this.buttonTemplateMaximize.Size = new System.Drawing.Size(30, 25);
+            this.buttonTemplateMaximize.TabIndex = 11;
+            this.buttonTemplateMaximize.UseVisualStyleBackColor = false;
+            this.buttonTemplateMaximize.Click += new System.EventHandler(this.buttonTemplateMaximize_Click);
+            // 
+            // buttonTempCloseMinimized
+            // 
+            this.buttonTempCloseMinimized.BackColor = System.Drawing.Color.LightSalmon;
+            this.buttonTempCloseMinimized.FlatAppearance.BorderSize = 0;
+            this.buttonTempCloseMinimized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTempCloseMinimized.Image = ((System.Drawing.Image)(resources.GetObject("buttonTempCloseMinimized.Image")));
+            this.buttonTempCloseMinimized.Location = new System.Drawing.Point(237, 4);
+            this.buttonTempCloseMinimized.Name = "buttonTempCloseMinimized";
+            this.buttonTempCloseMinimized.Size = new System.Drawing.Size(30, 25);
+            this.buttonTempCloseMinimized.TabIndex = 12;
+            this.buttonTempCloseMinimized.UseVisualStyleBackColor = false;
+            this.buttonTempCloseMinimized.Click += new System.EventHandler(this.buttonTempCloseMinimized_Click);
             // 
             // FormMain
             // 
@@ -576,6 +646,8 @@
             this.templatePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.templatePreviewBox)).EndInit();
             this.mainImagePanel.ResumeLayout(false);
+            this.templatePanelMinimized.ResumeLayout(false);
+            this.templatePanelMinimized.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -627,6 +699,11 @@
         private System.Windows.Forms.ToolTip toolTipHelper;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonShowHideTemp;
+        private System.Windows.Forms.Panel templatePanelMinimized;
+        private System.Windows.Forms.Button buttonTempCloseMinimized;
+        private System.Windows.Forms.Button buttonTemplateMaximize;
+        private System.Windows.Forms.Button buttonShowHideMinimized;
+        private System.Windows.Forms.Label labelTemplateNameMinimized;
     }
 }
 
