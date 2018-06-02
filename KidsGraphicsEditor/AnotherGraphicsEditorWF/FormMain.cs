@@ -15,7 +15,7 @@ namespace AnotherGraphicsEditorWF
     public partial class FormMain : Form
     {
         bool isImageSaved;
-
+        bool isTemplateOn;
         bool templateShown;
                 
         bool mouseDown;
@@ -59,11 +59,12 @@ namespace AnotherGraphicsEditorWF
 
             templateShown = false;
             isTemplateOn = false;            
-            curTemplateSize = -1;
-            curTemplateStep = -1;
+
             BackgroundImage = null; //is it correct way to clear BackgroundImage of the form?
             templatePanel.Enabled = false;
-            templatePanel.Visible = false;            
+            templatePanel.Visible = false;
+            templatePanelMinimized.Enabled = false;
+            templatePanelMinimized.Visible = false;     
             
             isImageSaved = false;
             
@@ -467,6 +468,18 @@ namespace AnotherGraphicsEditorWF
             currentTemplatePicture = -1;
         }
 
+        private void buttonTempCloseMinimized_Click(object sender, EventArgs e)
+        {
+            isTemplateOn = false;
+            BackgroundImage = null; //is it correct way to clear BackgroundImage of the form?
+            templatePanelMinimized.Enabled = false;
+            templatePanelMinimized.Visible = false;
+            templateFiles = null;
+            templateBackground = null;
+            templateName = null;
+            currentTemplatePicture = -1;
+        }
+
         private void buttonStepBack_Click(object sender, EventArgs e)
         {
             if (currentTemplatePicture > 0)
@@ -510,6 +523,36 @@ namespace AnotherGraphicsEditorWF
 
         }
 
+        private void buttonTemplateMinimize_Click(object sender, EventArgs e)
+        {
+            templatePanelMinimized.Enabled = true;
+            templatePanelMinimized.Visible = true;
+            templatePanel.Enabled = false;
+            templatePanel.Visible = false;
+        }
+
+        private void buttonTemplateMaximize_Click(object sender, EventArgs e)
+        {
+            templatePanelMinimized.Enabled = false;
+            templatePanelMinimized.Visible = false;
+            templatePanel.Enabled = true;
+            templatePanel.Visible = true;
+        }
+
+        private void buttonShowHideMinimized_Click(object sender, EventArgs e)
+        {
+            if (!templateShown)
+            {
+                mainImagePanel.BackgroundImage = backPic;
+                templateShown = true;
+            }
+            else
+            {
+                mainImagePanel.BackgroundImage = null;
+                templateShown = false;
+            }
+        }
+
         private void showTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //показать диалог
@@ -520,6 +563,7 @@ namespace AnotherGraphicsEditorWF
                 templateBackground = loadTemplate.TemplateBackground;
                 templateName = loadTemplate.TemplateName;
                 labelTemplateName.Text = templateName;
+                labelTemplateNameMinimized.Text = templateName;
 
                 //открыть выбранный шаблон
                 isTemplateOn = true;
