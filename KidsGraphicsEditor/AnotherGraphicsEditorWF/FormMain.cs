@@ -466,6 +466,9 @@ namespace AnotherGraphicsEditorWF
             templateBackground = null;
             templateName = null;
             currentTemplatePicture = -1;
+
+            mainImagePanel.BackgroundImage = null;
+            templateShown = false;
         }
 
         private void buttonTempCloseMinimized_Click(object sender, EventArgs e)

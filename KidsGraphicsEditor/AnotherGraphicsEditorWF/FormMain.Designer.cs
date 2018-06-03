@@ -73,12 +73,12 @@
             this.labelTemplateName = new System.Windows.Forms.Label();
             this.openTemplateDialog = new System.Windows.Forms.OpenFileDialog();
             this.mainImagePanel = new System.Windows.Forms.Panel();
-            this.toolTipHelper = new System.Windows.Forms.ToolTip(this.components);
             this.templatePanelMinimized = new System.Windows.Forms.Panel();
-            this.labelTemplateNameMinimized = new System.Windows.Forms.Label();
-            this.buttonShowHideMinimized = new System.Windows.Forms.Button();
-            this.buttonTemplateMaximize = new System.Windows.Forms.Button();
             this.buttonTempCloseMinimized = new System.Windows.Forms.Button();
+            this.buttonTemplateMaximize = new System.Windows.Forms.Button();
+            this.buttonShowHideMinimized = new System.Windows.Forms.Button();
+            this.labelTemplateNameMinimized = new System.Windows.Forms.Label();
+            this.toolTipHelper = new System.Windows.Forms.ToolTip(this.components);
             this.mainMenuStrip.SuspendLayout();
             this.toolsAndColorsPanel.SuspendLayout();
             this.toolsPanel.SuspendLayout();
@@ -231,7 +231,7 @@
             this.labelEllipse.Name = "labelEllipse";
             this.labelEllipse.Size = new System.Drawing.Size(63, 60);
             this.labelEllipse.TabIndex = 4;
-            this.toolTipHelper.SetToolTip(this.labelEllipse, "Овал");
+            this.toolTipHelper.SetToolTip(this.labelEllipse, "Кружок/Овал");
             this.labelEllipse.Click += new System.EventHandler(this.labelEllipse_Click);
             // 
             // labelRect
@@ -568,15 +568,31 @@
             this.templatePanelMinimized.Size = new System.Drawing.Size(280, 35);
             this.templatePanelMinimized.TabIndex = 10;
             // 
-            // labelTemplateNameMinimized
+            // buttonTempCloseMinimized
             // 
-            this.labelTemplateNameMinimized.AutoSize = true;
-            this.labelTemplateNameMinimized.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTemplateNameMinimized.Location = new System.Drawing.Point(3, 10);
-            this.labelTemplateNameMinimized.Name = "labelTemplateNameMinimized";
-            this.labelTemplateNameMinimized.Size = new System.Drawing.Size(108, 20);
-            this.labelTemplateNameMinimized.TabIndex = 1;
-            this.labelTemplateNameMinimized.Text = "ИмяШаблона";
+            this.buttonTempCloseMinimized.BackColor = System.Drawing.Color.LightSalmon;
+            this.buttonTempCloseMinimized.FlatAppearance.BorderSize = 0;
+            this.buttonTempCloseMinimized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTempCloseMinimized.Image = ((System.Drawing.Image)(resources.GetObject("buttonTempCloseMinimized.Image")));
+            this.buttonTempCloseMinimized.Location = new System.Drawing.Point(237, 4);
+            this.buttonTempCloseMinimized.Name = "buttonTempCloseMinimized";
+            this.buttonTempCloseMinimized.Size = new System.Drawing.Size(30, 25);
+            this.buttonTempCloseMinimized.TabIndex = 12;
+            this.buttonTempCloseMinimized.UseVisualStyleBackColor = false;
+            this.buttonTempCloseMinimized.Click += new System.EventHandler(this.buttonTempCloseMinimized_Click);
+            // 
+            // buttonTemplateMaximize
+            // 
+            this.buttonTemplateMaximize.BackColor = System.Drawing.Color.LightSalmon;
+            this.buttonTemplateMaximize.FlatAppearance.BorderSize = 0;
+            this.buttonTemplateMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTemplateMaximize.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemplateMaximize.Image")));
+            this.buttonTemplateMaximize.Location = new System.Drawing.Point(195, 4);
+            this.buttonTemplateMaximize.Name = "buttonTemplateMaximize";
+            this.buttonTemplateMaximize.Size = new System.Drawing.Size(30, 25);
+            this.buttonTemplateMaximize.TabIndex = 11;
+            this.buttonTemplateMaximize.UseVisualStyleBackColor = false;
+            this.buttonTemplateMaximize.Click += new System.EventHandler(this.buttonTemplateMaximize_Click);
             // 
             // buttonShowHideMinimized
             // 
@@ -592,31 +608,15 @@
             this.buttonShowHideMinimized.UseVisualStyleBackColor = false;
             this.buttonShowHideMinimized.Click += new System.EventHandler(this.buttonShowHideMinimized_Click);
             // 
-            // buttonTemplateMaximize
+            // labelTemplateNameMinimized
             // 
-            this.buttonTemplateMaximize.BackColor = System.Drawing.Color.LightSalmon;
-            this.buttonTemplateMaximize.FlatAppearance.BorderSize = 0;
-            this.buttonTemplateMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTemplateMaximize.Image = ((System.Drawing.Image)(resources.GetObject("buttonTemplateMaximize.Image")));
-            this.buttonTemplateMaximize.Location = new System.Drawing.Point(195, 4);
-            this.buttonTemplateMaximize.Name = "buttonTemplateMaximize";
-            this.buttonTemplateMaximize.Size = new System.Drawing.Size(30, 25);
-            this.buttonTemplateMaximize.TabIndex = 11;
-            this.buttonTemplateMaximize.UseVisualStyleBackColor = false;
-            this.buttonTemplateMaximize.Click += new System.EventHandler(this.buttonTemplateMaximize_Click);
-            // 
-            // buttonTempCloseMinimized
-            // 
-            this.buttonTempCloseMinimized.BackColor = System.Drawing.Color.LightSalmon;
-            this.buttonTempCloseMinimized.FlatAppearance.BorderSize = 0;
-            this.buttonTempCloseMinimized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTempCloseMinimized.Image = ((System.Drawing.Image)(resources.GetObject("buttonTempCloseMinimized.Image")));
-            this.buttonTempCloseMinimized.Location = new System.Drawing.Point(237, 4);
-            this.buttonTempCloseMinimized.Name = "buttonTempCloseMinimized";
-            this.buttonTempCloseMinimized.Size = new System.Drawing.Size(30, 25);
-            this.buttonTempCloseMinimized.TabIndex = 12;
-            this.buttonTempCloseMinimized.UseVisualStyleBackColor = false;
-            this.buttonTempCloseMinimized.Click += new System.EventHandler(this.buttonTempCloseMinimized_Click);
+            this.labelTemplateNameMinimized.AutoSize = true;
+            this.labelTemplateNameMinimized.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTemplateNameMinimized.Location = new System.Drawing.Point(3, 10);
+            this.labelTemplateNameMinimized.Name = "labelTemplateNameMinimized";
+            this.labelTemplateNameMinimized.Size = new System.Drawing.Size(108, 20);
+            this.labelTemplateNameMinimized.TabIndex = 1;
+            this.labelTemplateNameMinimized.Text = "ИмяШаблона";
             // 
             // FormMain
             // 

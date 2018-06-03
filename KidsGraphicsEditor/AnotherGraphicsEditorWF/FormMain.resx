@@ -306,16 +306,16 @@
   </data>
   <data name="buttonTemplateMaximize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAZCAYAAAAmNZ4aAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAHeSURBVEhLxZbNKkVRGIYPYqrIQDJxDYbIUG7AwJg74QKUKBfgMkxM5K/knyhJMpGJMuJ52F8d
-        u332Wud06rz1tPc+61vfOmt9P3s32tAQLMA2HMELfBVXn/3dce26ogFYARf4zkA77Z3XsSbhGMLpNazD
-        PEzBcHH12d9vIGyd5/y2NQ2voJMnWIY+qJPj2mnvPOfrJ1v+01h0D0ahHWnvvFg8a+fGJo7XyYPQiZwX
-        i+svGXMTQ2OPq92dluX8OHb9tpSlENlrrFJahH04gEN4g11oln70p9+WpWYdamT2phJJbYD2zXxCs/Sj
-        P8f0XymbgAZrv09p9cMcXEAs/AhlWWqO6b9SdiANrMscjUAk4nNxvYOy9OeY/isV8bUppGTinIL2DzBT
-        3NtEytKfY/qvlL1XAztSWUuwCcZsDM5A23uIOt2B1b/bf9KftvqvVN2OT8CxWTgv7m9hAlJK7rguxrFD
-        j9XrFYxDjpIxjqw2C8u6BMfE43XnOSWnklldV8cfEAsHW5CSfuKt1bKO6zqXHekdrFmP3ZibcClldS7V
-        k16tevZ2Uj15H4d68gUS8p/GsYvZ7gvEurQpNH9z+XtXvrlCxsbEiGxPoZ32WTHNkaVgHdoE7EAu0OF3
-        daPxA0QJxC6AQDQJAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAZCAYAAAAmNZ4aAAAABGdBTUEAALGPC/xhBQAAAd5JREFUSEvF
+        ls0qRVEYhg9iqshAMnENhshQbsDAmDvhApQoF+AyTEzkr+SfKEkykYky4nnYXx27ffZa53TqvPW09z7r
+        W986a30/ezfa0BAswDYcwQt8FVef/d1x7bqiAVgBF/jOQDvtndexJuEYwuk1rMM8TMFwcfXZ328gbJ3n
+        /LY1Da+gkydYhj6ok+Paae885+snW/7TWHQPRqEdae+8WDxr58YmjtfJg9CJnBeL6y8ZcxNDY4+r3Z2W
+        5fw4dv22lKUQ2WusUlqEfTiAQ3iDXWiWfvSn35alZh1qZPamEkltgPbNfEKz9KM/x/RfKZuABmu/T2n1
+        wxxcQCz8CGVZao7pv1J2IA2syxyNQCTic3G9g7L055j+KxXxtSmkZOKcgvYPMFPc20TK0p9j+q+UvVcD
+        O1JZS7AJxmwMzkDbe4g63YHVv9t/0p+2+q9U3Y5PwLFZOC/ub2ECUkruuC7GsUOP1esVjEOOkjGOrDYL
+        y7oEx8Tjdec5JaeSWV1Xxx8QCwdbkJJ+4q3Vso7rOpcd6R2sWY/dmJtwKWV1LtWTXq169nZSPXkfh3ry
+        BRLyn8axi9nuC8S6tCk0f3P5e1e+uULGxsSIbE+hnfZZMc2RpWAd2gTsQC7Q4Xd1o/EDRAnELoBANAkA
+        AAAASUVORK5CYII=
 </value>
   </data>
   <data name="buttonShowHideMinimized.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
