@@ -529,7 +529,7 @@ namespace AnotherGraphicsEditorWF
         private void buttonTemplateMinimize_Click(object sender, EventArgs e)
         {
             templatePanelMinimized.Enabled = true;
-            templatePanelMinimized.Visible = true;
+            templatePanelMinimized.Visible = true;            
             templatePanel.Enabled = false;
             templatePanel.Visible = false;
         }

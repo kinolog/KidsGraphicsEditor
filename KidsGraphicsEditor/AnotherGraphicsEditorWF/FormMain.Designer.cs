@@ -468,7 +468,7 @@
             this.buttonShowHideTemp.Name = "buttonShowHideTemp";
             this.buttonShowHideTemp.Size = new System.Drawing.Size(30, 25);
             this.buttonShowHideTemp.TabIndex = 9;
-            this.toolTipHelper.SetToolTip(this.buttonShowHideTemp, "Показать шаблон");
+            this.toolTipHelper.SetToolTip(this.buttonShowHideTemp, "Показать/Скрыть шаблон");
             this.buttonShowHideTemp.UseVisualStyleBackColor = false;
             this.buttonShowHideTemp.Click += new System.EventHandler(this.buttonShowHideTemp_Click);
             // 
@@ -482,6 +482,7 @@
             this.buttonTemplateClose.Name = "buttonTemplateClose";
             this.buttonTemplateClose.Size = new System.Drawing.Size(30, 25);
             this.buttonTemplateClose.TabIndex = 8;
+            this.toolTipHelper.SetToolTip(this.buttonTemplateClose, "Закрыть");
             this.buttonTemplateClose.UseVisualStyleBackColor = false;
             this.buttonTemplateClose.Click += new System.EventHandler(this.buttonTemplateClose_Click);
             // 
@@ -495,6 +496,7 @@
             this.buttonTemplateMinimize.Name = "buttonTemplateMinimize";
             this.buttonTemplateMinimize.Size = new System.Drawing.Size(30, 25);
             this.buttonTemplateMinimize.TabIndex = 7;
+            this.toolTipHelper.SetToolTip(this.buttonTemplateMinimize, "Свернуть");
             this.buttonTemplateMinimize.UseVisualStyleBackColor = false;
             this.buttonTemplateMinimize.Click += new System.EventHandler(this.buttonTemplateMinimize_Click);
             // 
@@ -578,6 +580,7 @@
             this.buttonTempCloseMinimized.Name = "buttonTempCloseMinimized";
             this.buttonTempCloseMinimized.Size = new System.Drawing.Size(30, 25);
             this.buttonTempCloseMinimized.TabIndex = 12;
+            this.toolTipHelper.SetToolTip(this.buttonTempCloseMinimized, "Закрыть");
             this.buttonTempCloseMinimized.UseVisualStyleBackColor = false;
             this.buttonTempCloseMinimized.Click += new System.EventHandler(this.buttonTempCloseMinimized_Click);
             // 
@@ -591,6 +594,7 @@
             this.buttonTemplateMaximize.Name = "buttonTemplateMaximize";
             this.buttonTemplateMaximize.Size = new System.Drawing.Size(30, 25);
             this.buttonTemplateMaximize.TabIndex = 11;
+            this.toolTipHelper.SetToolTip(this.buttonTemplateMaximize, "Развернуть");
             this.buttonTemplateMaximize.UseVisualStyleBackColor = false;
             this.buttonTemplateMaximize.Click += new System.EventHandler(this.buttonTemplateMaximize_Click);
             // 
@@ -604,7 +608,7 @@
             this.buttonShowHideMinimized.Name = "buttonShowHideMinimized";
             this.buttonShowHideMinimized.Size = new System.Drawing.Size(30, 25);
             this.buttonShowHideMinimized.TabIndex = 10;
-            this.toolTipHelper.SetToolTip(this.buttonShowHideMinimized, "Показать шаблон");
+            this.toolTipHelper.SetToolTip(this.buttonShowHideMinimized, "Показать/Скрыть шаблон");
             this.buttonShowHideMinimized.UseVisualStyleBackColor = false;
             this.buttonShowHideMinimized.Click += new System.EventHandler(this.buttonShowHideMinimized_Click);
             // 

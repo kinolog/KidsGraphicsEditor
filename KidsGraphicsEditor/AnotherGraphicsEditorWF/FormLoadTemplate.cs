@@ -78,7 +78,6 @@ namespace AnotherGraphicsEditorWF
 
                     templateFiles.Add(files);
                     templateNames.Add(template.Remove(0, (Path.GetDirectoryName(template).Length)).Replace("\\", ""));                    
-                    //templateNames.Add(Path.GetDirectoryName(template));
                 }
             }
 
