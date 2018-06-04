@@ -102,7 +102,9 @@ namespace AnotherGraphicsEditorWF
         {
             if (openImageDialog.ShowDialog()== DialogResult.OK)
             {
-                loadPic = new Bitmap(openImageDialog.FileName);                               
+               
+                loadPic = new Bitmap(openImageDialog.FileName);
+               
                 loadPicFlag = true;
                 mainPictureBox.Invalidate();
                 mainPictureBox.Update();
@@ -365,9 +367,10 @@ namespace AnotherGraphicsEditorWF
         {
             if (loadPicFlag)
             {
-                snapshot = (Bitmap)loadPic;
+                LoadImagetoSnapshot();              
                 e.Graphics.DrawImageUnscaled(snapshot, 0, 0);
                 loadPicFlag = false;
+                //mainPictureBox.DrawToBitmap(snapshot, new Rectangle(0, 0, backPic.Width, backPic.Height));                
             }
             else
 
@@ -604,6 +607,17 @@ namespace AnotherGraphicsEditorWF
                 for (int y = 0; y < b.Height; y++)
                     if (b.GetPixel(x, y) == Color.Transparent)
                         b.SetPixel(x, y, Color.White);
+            }
+        }
+
+        private void LoadImagetoSnapshot()
+        {
+            int width = loadPic.Width > mainPictureBox.Width ? mainPictureBox.Width : loadPic.Width;
+            int height = loadPic.Height > mainPictureBox.Height ? mainPictureBox.Height : loadPic.Height;
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                    snapshot.SetPixel(x, y, ((Bitmap)loadPic).GetPixel(x, y));
             }
         }
     }

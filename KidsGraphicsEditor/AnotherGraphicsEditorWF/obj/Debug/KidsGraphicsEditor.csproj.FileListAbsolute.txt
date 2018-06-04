@@ -31,7 +31,6 @@ C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\Ano
 C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.exe.config
 C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.exe
 C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\bin\Debug\AnotherGraphicsEditorWF.pdb
-C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\KidsGraphicsEditor.csprojResolveAssemblyReference.cache
 C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.FormMain.resources
 C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.Properties.Resources.resources
 C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\KidsGraphicsEditor.csproj.GenerateResource.Cache
@@ -39,3 +38,5 @@ C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphic
 C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.pdb
 C:\GitHub\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.FormLoadTemplate.resources
 C:\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.FormLoadTemplate.resources
+C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\AnotherGraphicsEditorWF.FormLoadTemplate.resources
+C:\University\Мои работы\3 курс\тп\KidsGraphicsEditor\KidsGraphicsEditor\AnotherGraphicsEditorWF\obj\Debug\KidsGraphicsEditor.csprojResolveAssemblyReference.cache
